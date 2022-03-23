@@ -39,7 +39,7 @@ namespace moduls.pages
             connection.Close();
             foreach (string[] s in data)
             {
-                dataGridView1.Rows.Add(s);
+                dataGridView2.Rows.Add(s);
             }
         }
 
@@ -59,16 +59,21 @@ namespace moduls.pages
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            SqlConnection _connection = new SqlConnection(sql);
-            _connection.Open();
-            string gg = Convert.ToString(dataGridView1.SelectedRows);
-            MessageBox.Show("" + gg);
-            //string command = "DELETE FROM [Сотрудник] WHERE ID = " + Convert.ToInt32(dataGridView1.SelectedRows[0]) + "";
-            //SqlCommand query = new SqlCommand(command, connection);
-            //SqlDataReader reader = query.ExecuteReader();
-            _connection.Close();
+            string message = "Вы уверены, что хотите удалить строчку?";
+            string caption = "Удалить строчку";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                string command = "DELETE FROM " + viewTableCommandNow + " = '" + Convert.ToInt32(deletedLineNumber.Text) + "'";
+                addFunction(command);
+                command = viewTableUpdate + Convert.ToInt32(deletedLineNumber.Text);
+                addFunction(command);
+                if (radioButton1.Checked == true) radioButton1_CheckedChanged(sender, e);
+                if (radioButton2.Checked == true) radioButton2_CheckedChanged(sender, e);
+            }
         }
-
         private void Back_Click(object sender, EventArgs e)
         {
             Autorizacia frm = new Autorizacia();
@@ -136,6 +141,15 @@ namespace moduls.pages
             {
                 dataGridView2.Rows.Add(s);
             }
+            sqlConnection.Close();
+        }
+
+        public void addFunction(string command)
+        {
+            SqlConnection sqlConnection = new SqlConnection(sql);
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
+            sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
     }

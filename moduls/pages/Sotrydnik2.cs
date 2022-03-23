@@ -29,6 +29,7 @@ namespace moduls.pages
         {
             try
             {
+                //загрузка перечня Блоков оценивания
                 SqlConnection _connection = new SqlConnection(Sql);
                 _connection.Open();
                 string _command = "SELECT * FROM Блоки";
@@ -40,6 +41,7 @@ namespace moduls.pages
                     Block.Items.Add(_reader[1]);
                 }
                 _reader.Close();
+                //загрузка перечня Архетипов оценивания
                 _command = "SELECT * FROM Архетипы";
                 _query = new SqlCommand(_command, _connection);
                 _reader = _query.ExecuteReader();
@@ -59,21 +61,25 @@ namespace moduls.pages
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            //выбор описания блока оценивания
             Deskription.Text = Lowlevel;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            //выбор описания блока оценивания
             Deskription.Text = Mediumlevel;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            //выбор описания блока оценивания
             Deskription.Text = Hightlevel;
         }
 
         private void Block_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //загрузка описания блока оценивания
             try
             {
                 int _block = Convert.ToInt32(Block.SelectedIndex) + 1;
@@ -126,10 +132,7 @@ namespace moduls.pages
             }
         }
 
-        private void Archetype_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
+        private void Archetype_SelectedIndexChanged(object sender, EventArgs e) {}
 
         private void Estimate_Click(object sender, EventArgs e)
         {
@@ -170,7 +173,7 @@ namespace moduls.pages
                             _reader.Read();
                             int _trebovania = Convert.ToInt32(_reader[0]);
                             _reader.Close();
-                            //Выставление оценки - есть проблема - нужно добавить комментарий и ID_Сотрудника который выставляет оценку
+                            //Выставление оценки
                             _command = "INSERT INTO [Оценка по требованию] (ID, ID_Требования, ID_Карта_комиссии, ID_Сотрудника, Оценка, Дата) VALUES ("
                                 + (count + 1) + ", " + _trebovania + ", " + classes.OcenkaTreb.ID_Karta_Komissii
                                 + ", " + classes.PassLogin.ID + ", '" + ocenkaBox.Text + "', '" + DateTime.Today + "')";
@@ -222,7 +225,7 @@ namespace moduls.pages
                 SqlConnection _connection = new SqlConnection(Sql);
                 _connection.Open();
                 classes.OcenkaTreb.Link_Sotryd = linkBox.Text;
-                //Добавление комментария
+                //Копирование в БД ссылки на гит работы Сотрудника
                 string _command = "update [Карта комиссии] set Ссылка = '" + classes.OcenkaTreb.Link_Sotryd + "' where ID = " + (classes.OcenkaTreb.ID_Karta_Komissii) + " ";
                 SqlCommand _query = new SqlCommand(_command, _connection);
                 _query.ExecuteNonQuery();

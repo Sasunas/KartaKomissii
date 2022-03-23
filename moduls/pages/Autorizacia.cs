@@ -114,7 +114,7 @@ namespace moduls
         {
             Application.Exit();
         }
-
+        //Можно суда даже не смотреть это потом будет удален(использовалось только для юнит теста)
         public int Avtorizacia_Click1111111(string A, string B)
         {
             SqlConnection connection = new SqlConnection(sql);
