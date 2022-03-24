@@ -30,7 +30,7 @@ namespace moduls.pages
 
         private void Regist_Click(object sender, EventArgs e)
         {
-            pages.Registracia registracia = new Registracia();
+            pages.RegistraciaSotr registracia = new RegistraciaSotr();
             this.Hide();
             registracia.ShowDialog();
         }

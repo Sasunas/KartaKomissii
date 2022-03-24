@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 
 namespace moduls.pages
 {
-    public partial class Registracia : Form
+    public partial class RegistraciaSotr : Form
     {
         public static string sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
-        public Registracia()
+        public RegistraciaSotr()
         {
             InitializeComponent();
             Load_Role();
@@ -32,8 +32,8 @@ namespace moduls.pages
             int count = Convert.ToInt32(reader[0].ToString());
             reader.Close();
             //Наполнение Сотрудников
-            command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество,Паспорт) VALUES(" + (count + 1) + ",'" + textBox1.Text + "','" + textBox2.Text
-                                                                                          + "','" + textBox3.Text + "'," + textBox4.Text + ")";
+            command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ",'" + textBox1.Text + "','" + textBox2.Text
+                                                                                          + "','" + textBox3.Text + "')";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
             //Рассчёт длины Паролей
@@ -47,14 +47,14 @@ namespace moduls.pages
             command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox5.Text + "','" + textBox6.Text + "')";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
-            // Рассчёт длины роли Сотрудника
+            // Рассчёт длины Ролей Сотрудников
             command = "SELECT COUNT(*) FROM [Роли_Сотрудников]";
             query = new SqlCommand(command, connection);
             reader = query.ExecuteReader();
             reader.Read();
             count = Convert.ToInt32(reader[0].ToString());
             reader.Close();
-            // Наполнение Паролей
+            // Наполнение Ролей Сотрудников
             command = "INSERT INTO [Роли_Сотрудников] (ID_Сотрудники, ID_Роли) VALUES(" + (count + 1) + "," + Convert.ToInt32(comboBox1.SelectedItem) + ")";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();

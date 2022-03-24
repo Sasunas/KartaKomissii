@@ -1,7 +1,7 @@
 ﻿
 namespace moduls.pages
 {
-    partial class Registracia
+    partial class RegistraciaSotr
     {
         /// <summary>
         /// Required designer variable.

@@ -95,11 +95,23 @@
     <Compile Include="pages\Redactirovanie.Designer.cs">
       <DependentUpon>Redactirovanie.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\Registracia.cs">
+    <Compile Include="pages\RegistraciaKarty.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\Registracia.Designer.cs">
-      <DependentUpon>Registracia.cs</DependentUpon>
+    <Compile Include="pages\RegistraciaKarty.Designer.cs">
+      <DependentUpon>RegistraciaKarty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\RegistraciaRoli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\RegistraciaRoli.Designer.cs">
+      <DependentUpon>RegistraciaRoli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\RegistraciaSotr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\RegistraciaSotr.Designer.cs">
+      <DependentUpon>RegistraciaSotr.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\Sotrydnik.cs">
       <SubType>Form</SubType>
@@ -140,8 +152,14 @@
     <EmbeddedResource Include="pages\Redactirovanie.resx">
       <DependentUpon>Redactirovanie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\Registracia.resx">
-      <DependentUpon>Registracia.cs</DependentUpon>
+    <EmbeddedResource Include="pages\RegistraciaKarty.resx">
+      <DependentUpon>RegistraciaKarty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\RegistraciaRoli.resx">
+      <DependentUpon>RegistraciaRoli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\RegistraciaSotr.resx">
+      <DependentUpon>RegistraciaSotr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\Sotrydnik.resx">
       <DependentUpon>Sotrydnik.cs</DependentUpon>
