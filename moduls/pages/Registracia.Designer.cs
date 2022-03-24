@@ -32,11 +32,9 @@ namespace moduls.pages
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.Regist = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -77,16 +75,6 @@ namespace moduls.pages
             this.label3.TabIndex = 2;
             this.label3.Text = "Отчество";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 111);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Число";
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(73, 29);
@@ -108,18 +96,11 @@ namespace moduls.pages
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 6;
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(73, 108);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
-            // 
             // Regist
             // 
             this.Regist.BackColor = System.Drawing.Color.White;
             this.Regist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Regist.Location = new System.Drawing.Point(44, 237);
+            this.Regist.Location = new System.Drawing.Point(44, 212);
             this.Regist.Name = "Regist";
             this.Regist.Size = new System.Drawing.Size(89, 23);
             this.Regist.TabIndex = 8;
@@ -131,7 +112,7 @@ namespace moduls.pages
             // 
             this.Back.BackColor = System.Drawing.Color.White;
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Location = new System.Drawing.Point(16, 279);
+            this.Back.Location = new System.Drawing.Point(16, 254);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(75, 23);
             this.Back.TabIndex = 9;
@@ -141,14 +122,14 @@ namespace moduls.pages
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(73, 159);
+            this.textBox5.Location = new System.Drawing.Point(73, 134);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 13;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(73, 134);
+            this.textBox6.Location = new System.Drawing.Point(73, 109);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 12;
@@ -157,7 +138,7 @@ namespace moduls.pages
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(12, 162);
+            this.label5.Location = new System.Drawing.Point(12, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 11;
@@ -167,7 +148,7 @@ namespace moduls.pages
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(12, 137);
+            this.label6.Location = new System.Drawing.Point(12, 112);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 10;
@@ -177,7 +158,7 @@ namespace moduls.pages
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(12, 185);
+            this.label7.Location = new System.Drawing.Point(12, 160);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 14;
@@ -186,7 +167,7 @@ namespace moduls.pages
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(73, 185);
+            this.comboBox1.Location = new System.Drawing.Point(73, 160);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 21);
             this.comboBox1.TabIndex = 15;
@@ -205,11 +186,9 @@ namespace moduls.pages
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.Regist);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -226,11 +205,9 @@ namespace moduls.pages
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button Regist;
         private System.Windows.Forms.Button Back;
         private System.Windows.Forms.TextBox textBox5;

@@ -34,11 +34,12 @@ namespace moduls.pages
             this.Regist = new System.Windows.Forms.Button();
             this.Redact = new System.Windows.Forms.Button();
             this.Delete = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.sotr = new System.Windows.Forms.RadioButton();
+            this.karty = new System.Windows.Forms.RadioButton();
+            this.roli = new System.Windows.Forms.RadioButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Exit
@@ -101,62 +102,76 @@ namespace moduls.pages
             this.Delete.UseVisualStyleBackColor = false;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
-            // radioButton1
+            // sotr
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(121, 15);
-            this.radioButton1.MaximumSize = new System.Drawing.Size(0, 23);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(84, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Сотрудники";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.sotr.AutoSize = true;
+            this.sotr.Location = new System.Drawing.Point(121, 15);
+            this.sotr.MaximumSize = new System.Drawing.Size(0, 23);
+            this.sotr.Name = "sotr";
+            this.sotr.Size = new System.Drawing.Size(84, 17);
+            this.sotr.TabIndex = 6;
+            this.sotr.TabStop = true;
+            this.sotr.Text = "Сотрудники";
+            this.sotr.UseVisualStyleBackColor = true;
+            this.sotr.CheckedChanged += new System.EventHandler(this.sotr_CheckedChanged);
             // 
-            // radioButton2
+            // karty
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(212, 15);
-            this.radioButton2.MaximumSize = new System.Drawing.Size(0, 23);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(110, 17);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Карты комиссии";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.karty.AutoSize = true;
+            this.karty.Location = new System.Drawing.Point(308, 15);
+            this.karty.MaximumSize = new System.Drawing.Size(0, 23);
+            this.karty.Name = "karty";
+            this.karty.Size = new System.Drawing.Size(110, 17);
+            this.karty.TabIndex = 7;
+            this.karty.TabStop = true;
+            this.karty.Text = "Карты комиссии";
+            this.karty.UseVisualStyleBackColor = true;
+            this.karty.CheckedChanged += new System.EventHandler(this.karty_CheckedChanged);
             // 
-            // radioButton3
+            // roli
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(328, 15);
-            this.radioButton3.MaximumSize = new System.Drawing.Size(0, 23);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(65, 17);
-            this.radioButton3.TabIndex = 8;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Пока хз";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.roli.AutoSize = true;
+            this.roli.Location = new System.Drawing.Point(211, 15);
+            this.roli.MaximumSize = new System.Drawing.Size(0, 23);
+            this.roli.Name = "roli";
+            this.roli.Size = new System.Drawing.Size(91, 17);
+            this.roli.TabIndex = 8;
+            this.roli.TabStop = true;
+            this.roli.Text = "Роли в карте";
+            this.roli.UseVisualStyleBackColor = true;
+            this.roli.CheckedChanged += new System.EventHandler(this.roli_CheckedChanged);
             // 
-            // dataGridView2
+            // dataGridView1
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(133, 41);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(492, 135);
-            this.dataGridView2.TabIndex = 9;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(133, 41);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(492, 135);
+            this.dataGridView1.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(239, 198);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(801, 559);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.ClientSize = new System.Drawing.Size(746, 521);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.roli);
+            this.Controls.Add(this.karty);
+            this.Controls.Add(this.sotr);
             this.Controls.Add(this.Delete);
             this.Controls.Add(this.Redact);
             this.Controls.Add(this.Regist);
@@ -166,7 +181,7 @@ namespace moduls.pages
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,9 +194,10 @@ namespace moduls.pages
         private System.Windows.Forms.Button Regist;
         private System.Windows.Forms.Button Redact;
         private System.Windows.Forms.Button Delete;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.RadioButton sotr;
+        private System.Windows.Forms.RadioButton karty;
+        private System.Windows.Forms.RadioButton roli;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }

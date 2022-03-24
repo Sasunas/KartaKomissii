@@ -21,26 +21,11 @@ namespace moduls.pages
         }
         public void Admin_Load()
         {
-            SqlConnection connection = new SqlConnection(sql);
-            connection.Open();
+            sotr.Checked = true;
             string command = "SELECT * FROM [Сотрудник]";
-            SqlCommand query = new SqlCommand(command, connection);
-            SqlDataReader reader = query.ExecuteReader();
-            List<string[]> data = new List<string[]>();
-            while (reader.Read())
-            {
-                data.Add(new string[5]);
-                data[data.Count - 1][1] = reader[0].ToString().Trim();
-                data[data.Count - 1][2] = reader[1].ToString().Trim();
-                data[data.Count - 1][3] = reader[2].ToString().Trim();
-                data[data.Count - 1][4] = reader[3].ToString().Trim();
-            }
-            reader.Close();
-            connection.Close();
-            foreach (string[] s in data)
-            {
-                dataGridView2.Rows.Add(s);
-            }
+            string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
+            string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
+            ViewFunction(command, lastIdCheck, getTableName);
         }
 
         private void Regist_Click(object sender, EventArgs e)
@@ -59,19 +44,39 @@ namespace moduls.pages
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            string viewTableNow = "";
             string message = "Вы уверены, что хотите удалить строчку?";
             string caption = "Удалить строчку";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
             result = MessageBox.Show(message, caption, buttons);
+            if(sotr.Checked == true)
+            {
+                viewTableNow = "Сотрудник";
+            } 
+            else
+            {
+                if (roli.Checked == true)
+                {
+                    viewTableNow = "Роль в текущей карте";
+                }
+                else
+                {
+                    if (karty.Checked == true)
+                    {
+                        viewTableNow = "Карта комиссии";
+                    }
+                }
+            }
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                string command = "DELETE FROM " + viewTableCommandNow + " = '" + Convert.ToInt32(deletedLineNumber.Text) + "'";
+                string command = "DELETE FROM " + viewTableNow + " = '" + Convert.ToInt32(dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected)) + "'";
                 addFunction(command);
-                command = viewTableUpdate + Convert.ToInt32(deletedLineNumber.Text);
-                addFunction(command);
-                if (radioButton1.Checked == true) radioButton1_CheckedChanged(sender, e);
-                if (radioButton2.Checked == true) radioButton2_CheckedChanged(sender, e);
+                //command = viewTableUpdate + Convert.ToInt32(deletedLineNumber.Text);
+                //addFunction(command);
+                if (sotr.Checked == true) sotr_CheckedChanged(sender, e);
+                if (sotr.Checked == true) roli_CheckedChanged(sender, e);
+                if (karty.Checked == true) karty_CheckedChanged(sender, e);
             }
         }
         private void Back_Click(object sender, EventArgs e)
@@ -86,7 +91,7 @@ namespace moduls.pages
             Application.Exit();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void sotr_CheckedChanged(object sender, EventArgs e)
         {
             string command = "SELECT * FROM [Сотрудник]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
@@ -94,7 +99,15 @@ namespace moduls.pages
             ViewFunction(command, lastIdCheck, getTableName);
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void roli_CheckedChanged(object sender, EventArgs e)
+        {
+            string command = "SELECT * FROM [Роль в текущей карте]";
+            string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
+            string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
+            ViewFunction(command, lastIdCheck, getTableName);
+        }
+
+        private void karty_CheckedChanged(object sender, EventArgs e)
         {
             string command = "SELECT * FROM [Карта комиссии]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
@@ -105,8 +118,8 @@ namespace moduls.pages
         public void ViewFunction(string command, string lastIdCheck, string getTableName)
         {
             int i;
-            dataGridView2.Rows.Clear();
-            dataGridView2.Columns.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
             SqlConnection sqlConnection = new SqlConnection(sql);
             sqlConnection.Open();
             SqlCommand sqlLastIdCheck = new SqlCommand(lastIdCheck, sqlConnection);
@@ -132,14 +145,14 @@ namespace moduls.pages
             while (reader.Read())
             {
                 DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-                this.dataGridView2.Columns.Add(column);
-                dataGridView2.Columns[i].HeaderText = reader[0].ToString().Trim();
+                this.dataGridView1.Columns.Add(column);
+                dataGridView1.Columns[i].HeaderText = reader[0].ToString().Trim();
                 i++;
             }
             reader.Close();
             foreach (string[] s in data)
             {
-                dataGridView2.Rows.Add(s);
+                dataGridView1.Rows.Add(s);
             }
             sqlConnection.Close();
         }
@@ -151,6 +164,29 @@ namespace moduls.pages
             SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount =
+        dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+                for (int i = 0; i < selectedRowCount; i++)
+                {
+                    sb.Append("Row: ");
+                    sb.Append(dataGridView1.SelectedRows[0].Index.ToString());
+                    sb.Append(", Row2: ");
+                    sb.Append(dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected));
+                    sb.Append(Environment.NewLine);
+                }
+                sb.Append("Row: ");
+                sb.Append(dataGridView1.SelectedRows[0].Index.ToString());
+                sb.Append("Total: " + selectedRowCount.ToString());
+                MessageBox.Show(sb.ToString(), "Selected Rows");
+            }
         }
     }
 }
