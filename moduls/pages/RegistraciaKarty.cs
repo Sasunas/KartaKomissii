@@ -17,11 +17,11 @@ namespace moduls.pages
         public RegistraciaKarty()
         {
             InitializeComponent();
-            Load_Role();
+            Load_Sotr();
         }
 
-        public void Load_Role()
-        {
+        public void Load_Sotr()
+        { 
             SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
             string command = "SELECT * FROM [Сотрудник]";
@@ -32,6 +32,7 @@ namespace moduls.pages
                 comboBox1.Items.Add(reader[1].ToString().Trim() + " " + reader[2].ToString().Trim() + " " + reader[3].ToString().Trim());
             }
             reader.Close();
+            connection.Close();
         }
 
         private void Regist_Click(object sender, EventArgs e)

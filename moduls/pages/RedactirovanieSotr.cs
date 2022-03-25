@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 
 namespace moduls.pages
 {
-    public partial class Redactirovanie : Form
+    public partial class RedactirovanieSotr : Form
     {
         public static string sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
-        public Redactirovanie()
+        public RedactirovanieSotr()
         {
             InitializeComponent();
         }
@@ -30,19 +30,35 @@ namespace moduls.pages
                 Sotrud.Items.Add(reader[1].ToString().Trim() + " " + reader[2].ToString().Trim() + " " + reader[3].ToString().Trim());
             }
             reader.Close();
+            connection.Close();
         }
         private void Redact_Click(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(sql);
             connection.Open();
-            string command = "UPDATE FROM [Сотрудник] SET Фамилия = '1', Имя = '1', Отчество = '1'";
+            string command = "UPDATE FROM [Сотрудник] SET Фамилия = '"+ textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "' WHERE ID = " + (comboBox1.SelectedIndex + 1) + " ";
             SqlCommand query = new SqlCommand(command, connection);
             SqlDataReader reader = query.ExecuteReader();
+            command = "UPDATE FROM [Пароли] SET Логин = '" + textBox5.Text + "', Пароль = '" + textBox6.Text + "' WHERE ID_Сотрудника = " + (comboBox1.SelectedIndex + 1) + "";
+            query = new SqlCommand(command, connection);
+            reader = query.ExecuteReader();
         }
 
         private void Sotrud_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            SqlConnection connection = new SqlConnection(sql);
+            connection.Open();
+            string command = "SELECT * FROM [Сотрудник] a left join [Пароли] b on a.ID = b.ID_Сотрудника WHERE ID = " + (comboBox1.SelectedIndex + 1) + "";
+            SqlCommand query = new SqlCommand(command, connection);
+            SqlDataReader reader = query.ExecuteReader();
+            reader.Read();
+            textBox1.Text = reader[1].ToString();
+            textBox2.Text = reader[2].ToString();
+            textBox3.Text = reader[3].ToString();
+            textBox5.Text = reader[5].ToString();
+            textBox6.Text = reader[6].ToString();
+            reader.Close();
+            connection.Close();
         }
     }
 }

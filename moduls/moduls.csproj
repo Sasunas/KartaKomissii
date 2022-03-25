@@ -89,11 +89,17 @@
     <Compile Include="pages\OcenkaGlavy2.Designer.cs">
       <DependentUpon>OcenkaGlavy2.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\Redactirovanie.cs">
+    <Compile Include="pages\RedactirovanieKarty.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\Redactirovanie.Designer.cs">
-      <DependentUpon>Redactirovanie.cs</DependentUpon>
+    <Compile Include="pages\RedactirovanieKarty.Designer.cs">
+      <DependentUpon>RedactirovanieKarty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\RedactirovanieSotr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\RedactirovanieSotr.Designer.cs">
+      <DependentUpon>RedactirovanieSotr.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\RegistraciaKarty.cs">
       <SubType>Form</SubType>
@@ -149,8 +155,11 @@
     <EmbeddedResource Include="pages\OcenkaGlavy2.resx">
       <DependentUpon>OcenkaGlavy2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\Redactirovanie.resx">
-      <DependentUpon>Redactirovanie.cs</DependentUpon>
+    <EmbeddedResource Include="pages\RedactirovanieKarty.resx">
+      <DependentUpon>RedactirovanieKarty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\RedactirovanieSotr.resx">
+      <DependentUpon>RedactirovanieSotr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\RegistraciaKarty.resx">
       <DependentUpon>RegistraciaKarty.cs</DependentUpon>

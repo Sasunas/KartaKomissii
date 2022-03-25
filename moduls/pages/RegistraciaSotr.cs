@@ -32,6 +32,7 @@ namespace moduls.pages
                 comboBox1.Items.Add(reader[1].ToString().Trim());
             }
             reader.Close();
+            connection.Close();
         }
 
         private void Regist_Click(object sender, EventArgs e)

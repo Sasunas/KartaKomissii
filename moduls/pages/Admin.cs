@@ -37,7 +37,7 @@ namespace moduls.pages
 
         private void Redact_Click(object sender, EventArgs e)
         {
-            pages.Redactirovanie redactirovanie = new Redactirovanie();
+            pages.RedactirovanieSotr redactirovanie = new RedactirovanieSotr();
             this.Close();
             redactirovanie.ShowDialog();
         }
