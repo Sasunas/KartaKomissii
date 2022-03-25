@@ -13,14 +13,15 @@ namespace moduls.pages
 {
     public partial class RedactirovanieSotr : Form
     {
-        public static string sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
+        public static string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
         public RedactirovanieSotr()
         {
             InitializeComponent();
         }
+
         public void Sotrud_Load()
         {
-            SqlConnection connection = new SqlConnection(sql);
+            SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
             string command = "SELECT * FROM [Сотрудник]";
             SqlCommand query = new SqlCommand(command, connection);
@@ -32,23 +33,24 @@ namespace moduls.pages
             reader.Close();
             connection.Close();
         }
+
         private void Redact_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(sql);
+            SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
-            string command = "UPDATE FROM [Сотрудник] SET Фамилия = '"+ textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "' WHERE ID = " + (comboBox1.SelectedIndex + 1) + " ";
+            string command = "UPDATE FROM [Сотрудник] SET Фамилия = '"+ textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "' WHERE ID = " + (Sotrud.SelectedIndex + 1) + " ";
             SqlCommand query = new SqlCommand(command, connection);
             SqlDataReader reader = query.ExecuteReader();
-            command = "UPDATE FROM [Пароли] SET Логин = '" + textBox5.Text + "', Пароль = '" + textBox6.Text + "' WHERE ID_Сотрудника = " + (comboBox1.SelectedIndex + 1) + "";
+            command = "UPDATE FROM [Пароли] SET Логин = '" + textBox5.Text + "', Пароль = '" + textBox6.Text + "' WHERE ID_Сотрудника = " + (Sotrud.SelectedIndex + 1) + "";
             query = new SqlCommand(command, connection);
             reader = query.ExecuteReader();
         }
 
         private void Sotrud_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(sql);
+            SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
-            string command = "SELECT * FROM [Сотрудник] a left join [Пароли] b on a.ID = b.ID_Сотрудника WHERE ID = " + (comboBox1.SelectedIndex + 1) + "";
+            string command = "SELECT * FROM [Сотрудник] a left join [Пароли] b on a.ID = b.ID_Сотрудника WHERE ID = " + (Sotrud.SelectedIndex + 1) + "";
             SqlCommand query = new SqlCommand(command, connection);
             SqlDataReader reader = query.ExecuteReader();
             reader.Read();

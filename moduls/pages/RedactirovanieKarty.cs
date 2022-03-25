@@ -29,13 +29,29 @@ namespace moduls.pages
             SqlDataReader reader = query.ExecuteReader();
             while (reader.Read())
             {
-                comboBox1.Items.Add(reader[1].ToString().Trim() + " " + reader[2].ToString().Trim() + " " + reader[3].ToString().Trim());
+                Karta.Items.Add(reader[0].ToString().Trim());
             }
             reader.Close();
             connection.Close();
         }
 
         private void Sotrud_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(Sql);
+            connection.Open();
+            string command = "SELECT * FROM [Сотрудник] a left join [Пароли] b on a.ID = b.ID_Сотрудника WHERE ID = " + (Karta.SelectedIndex + 1) + "";
+            SqlCommand query = new SqlCommand(command, connection);
+            SqlDataReader reader = query.ExecuteReader();
+            reader.Read();
+            textBox1.Text = reader[0].ToString();
+            textBox2.Text = reader[1].ToString();
+            dateTimePicker1.Value = Convert.ToDateTime(reader[2].ToString());
+            dateTimePicker2.Value = Convert.ToDateTime(reader[3].ToString());
+            reader.Close();
+            connection.Close();
+        }
+
+        private void Redact_Click(object sender, EventArgs e)
         {
 
         }
