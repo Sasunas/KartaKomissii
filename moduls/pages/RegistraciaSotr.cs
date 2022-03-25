@@ -13,16 +13,30 @@ namespace moduls.pages
 {
     public partial class RegistraciaSotr : Form
     {
-        public static string sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
+        public static string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
         public RegistraciaSotr()
         {
             InitializeComponent();
             Load_Role();
         }
 
+        public void Load_Role()
+        {
+            SqlConnection connection = new SqlConnection(Sql);
+            connection.Open();
+            string command = "SELECT * FROM [Роли]";
+            SqlCommand query = new SqlCommand(command, connection);
+            SqlDataReader reader = query.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBox1.Items.Add(reader[1].ToString().Trim());
+            }
+            reader.Close();
+        }
+
         private void Regist_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(sql);
+            SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
             //Рассчёт длины Сотрудников
             string command = "SELECT COUNT(*) FROM [Сотрудник]";
@@ -54,25 +68,13 @@ namespace moduls.pages
             reader.Read();
             count = Convert.ToInt32(reader[0].ToString());
             reader.Close();
-            // Наполнение Ролей Сотрудников
-            command = "INSERT INTO [Роли_Сотрудников] (ID_Сотрудники, ID_Роли) VALUES(" + (count + 1) + "," + Convert.ToInt32(comboBox1.SelectedItem) + ")";
-            query = new SqlCommand(command, connection);
-            query.ExecuteNonQuery();
+            // Наполнение Ролей Сотрудников - надо свкорее всего удалить, система сменилась с глобальных ролей на локальные/сиюминутные.
+            //command = "INSERT INTO [Роли_Сотрудников] (ID_Сотрудники, ID_Роли) VALUES(" + (count + 1) + "," + Convert.ToInt32(comboBox1.SelectedItem) + ")";
+            //query = new SqlCommand(command, connection);
+            //query.ExecuteNonQuery();
             MessageBox.Show("Сотрудник был успешно зарегистрирован");
         }
-        public void Load_Role()
-        {
-            SqlConnection connection = new SqlConnection(sql);
-            connection.Open();
-            string command = "SELECT * FROM [Роли]";
-            SqlCommand query = new SqlCommand(command, connection);
-            SqlDataReader reader = query.ExecuteReader();
-            while (reader.Read())
-            {
-                comboBox1.Items.Add(reader[1].ToString().Trim());
-            }
-            reader.Close();
-        }
+        
         private void Back_Click(object sender, EventArgs e)
         {
             pages.Admin admin = new Admin();
