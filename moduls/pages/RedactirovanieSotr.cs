@@ -44,6 +44,7 @@ namespace moduls.pages
             command = "UPDATE FROM [Пароли] SET Логин = '" + textBox5.Text + "', Пароль = '" + textBox6.Text + "' WHERE ID_Сотрудника = " + (Sotrud.SelectedIndex + 1) + "";
             query = new SqlCommand(command, connection);
             reader = query.ExecuteReader();
+            connection.Close();
         }
 
         private void Sotrud_SelectedIndexChanged(object sender, EventArgs e)
