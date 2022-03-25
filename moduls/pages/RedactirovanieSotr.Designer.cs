@@ -62,7 +62,7 @@ namespace moduls.pages
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(12, 145);
+            this.label5.Location = new System.Drawing.Point(12, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 25;
@@ -72,7 +72,7 @@ namespace moduls.pages
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(12, 119);
+            this.label6.Location = new System.Drawing.Point(12, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 24;
@@ -113,7 +113,7 @@ namespace moduls.pages
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 65);
+            this.label2.Location = new System.Drawing.Point(12, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 17;
@@ -144,7 +144,7 @@ namespace moduls.pages
             this.Sotrud.FormattingEnabled = true;
             this.Sotrud.Location = new System.Drawing.Point(78, 12);
             this.Sotrud.Name = "Sotrud";
-            this.Sotrud.Size = new System.Drawing.Size(125, 21);
+            this.Sotrud.Size = new System.Drawing.Size(212, 21);
             this.Sotrud.TabIndex = 31;
             this.Sotrud.SelectedIndexChanged += new System.EventHandler(this.Sotrud_SelectedIndexChanged);
             // 
@@ -165,7 +165,7 @@ namespace moduls.pages
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(231, 235);
+            this.ClientSize = new System.Drawing.Size(342, 235);
             this.Controls.Add(this.Redact);
             this.Controls.Add(this.Sotrud);
             this.Controls.Add(this.label8);
