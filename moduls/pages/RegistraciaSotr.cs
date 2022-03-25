@@ -46,8 +46,8 @@ namespace moduls.pages
             int count = Convert.ToInt32(reader[0].ToString());
             reader.Close();
             //Наполнение Сотрудников
-            command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ",'" + textBox1.Text + "','" + textBox2.Text
-                                                                                          + "','" + textBox3.Text + "')";
+            command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + textBox1.Text + "', '" + textBox2.Text
+                                                                                          + "', '" + textBox3.Text + "')";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
             //Рассчёт длины Паролей
@@ -61,14 +61,14 @@ namespace moduls.pages
             command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox5.Text + "','" + textBox6.Text + "')";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
-            // Рассчёт длины Ролей Сотрудников
-            command = "SELECT COUNT(*) FROM [Роли_Сотрудников]";
-            query = new SqlCommand(command, connection);
-            reader = query.ExecuteReader();
-            reader.Read();
-            count = Convert.ToInt32(reader[0].ToString());
-            reader.Close();
-            // Наполнение Ролей Сотрудников - надо свкорее всего удалить, система сменилась с глобальных ролей на локальные/сиюминутные.
+            // Рассчёт длины Ролей Сотрудников - надо удалить, система сменилась с глобальных ролей на локальные/сиюминутные.
+            //command = "SELECT COUNT(*) FROM [Роли_Сотрудников]";
+            //query = new SqlCommand(command, connection);
+            //reader = query.ExecuteReader();
+            //reader.Read();
+            //count = Convert.ToInt32(reader[0].ToString());
+            //reader.Close();
+            // Наполнение Ролей Сотрудников
             //command = "INSERT INTO [Роли_Сотрудников] (ID_Сотрудники, ID_Роли) VALUES(" + (count + 1) + "," + Convert.ToInt32(comboBox1.SelectedItem) + ")";
             //query = new SqlCommand(command, connection);
             //query.ExecuteNonQuery();

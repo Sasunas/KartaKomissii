@@ -36,7 +36,28 @@ namespace moduls.pages
 
         private void Regist_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SqlConnection connection = new SqlConnection(Sql);
+                connection.Open();
+                //Рассчёт длины Карта комиссии
+                string command = "SELECT COUNT(*) FROM [Карта комиссии]";
+                SqlCommand query = new SqlCommand(command, connection);
+                SqlDataReader reader = query.ExecuteReader();
+                reader.Read();
+                int count = Convert.ToInt32(reader[0].ToString());
+                reader.Close();
+                //Наполнение Карта комиссии
+                command = "INSERT INTO [Карта комиссии] (ID,ID_Сотрудника, Дата начала, Дата конца) VALUES(" + (count + 1) + ",'" + comboBox1.Text + "','" + dateTimePicker1.Text
+                                                                                              + "','" + dateTimePicker2.Text + "')";
+                query = new SqlCommand(command, connection);
+                query.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(""+exp);
+            }  
         }
 
         private void Back_Click(object sender, EventArgs e)
