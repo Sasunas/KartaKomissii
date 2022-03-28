@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95EE9A70-B6C7-4CF9-8E74-DB93592D7699}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Commission_map</RootNamespace>
+    <AssemblyName>Commission_map</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\OcenkaTreb.cs" />
+    <Compile Include="Classes\PassLogin.cs" />
+    <Compile Include="Classes\RolvKarte.cs" />
+    <Compile Include="Pages\Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Authorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Authorization.Designer.cs">
+      <DependentUpon>Authorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EvaluationMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\EvaluationMember.Designer.cs">
+      <DependentUpon>EvaluationMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EvaluationGlava.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\EvaluationGlava.Designer.cs">
+      <DependentUpon>EvaluationGlava.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RedactirovanieKarty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\RedactirovanieKarty.Designer.cs">
+      <DependentUpon>RedactirovanieKarty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RedactirovanieSotr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\RedactirovanieSotr.Designer.cs">
+      <DependentUpon>RedactirovanieSotr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegistraciaKarty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\RegistraciaKarty.Designer.cs">
+      <DependentUpon>RegistraciaKarty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegistraciaRoli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\RegistraciaRoli.Designer.cs">
+      <DependentUpon>RegistraciaRoli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegistraciaSotr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\RegistraciaSotr.Designer.cs">
+      <DependentUpon>RegistraciaSotr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EvaluationEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\EvaluationEmployee.Designer.cs">
+      <DependentUpon>EvaluationEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pages\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Authorization.resx">
+      <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EvaluationMember.resx">
+      <DependentUpon>EvaluationMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EvaluationGlava.resx">
+      <DependentUpon>EvaluationGlava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RedactirovanieKarty.resx">
+      <DependentUpon>RedactirovanieKarty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RedactirovanieSotr.resx">
+      <DependentUpon>RedactirovanieSotr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RegistraciaKarty.resx">
+      <DependentUpon>RegistraciaKarty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RegistraciaRoli.resx">
+      <DependentUpon>RegistraciaRoli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\RegistraciaSotr.resx">
+      <DependentUpon>RegistraciaSotr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EvaluationEmployee.resx">
+      <DependentUpon>EvaluationEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

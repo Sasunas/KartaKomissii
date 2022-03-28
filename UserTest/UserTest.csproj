@@ -57,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\moduls\moduls.csproj">
+    <ProjectReference Include="..\KartaKomissii\Commission_map.csproj">
       <Project>{95ee9a70-b6c7-4cf9-8e74-db93592d7699}</Project>
-      <Name>moduls</Name>
+      <Name>Commission_map</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
