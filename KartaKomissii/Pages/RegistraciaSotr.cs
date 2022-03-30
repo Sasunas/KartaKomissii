@@ -17,22 +17,6 @@ namespace Commission_map.Pages
         public RegistraciaSotr()
         {
             InitializeComponent();
-            Load_Role();
-        }
-
-        public void Load_Role()
-        {
-            SqlConnection connection = new SqlConnection(Sql);
-            connection.Open();
-            string command = "SELECT * FROM [Роли]";
-            SqlCommand query = new SqlCommand(command, connection);
-            SqlDataReader reader = query.ExecuteReader();
-            while (reader.Read())
-            {
-                comboBox1.Items.Add(reader[1].ToString().Trim());
-            }
-            reader.Close();
-            connection.Close();
         }
 
         private void Regist_Click(object sender, EventArgs e)
@@ -62,25 +46,28 @@ namespace Commission_map.Pages
             command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox5.Text + "','" + textBox6.Text + "')";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
-            // Рассчёт длины Ролей Сотрудников - надо удалить, система сменилась с глобальных ролей на локальные/сиюминутные.
-            //command = "SELECT COUNT(*) FROM [Роли_Сотрудников]";
-            //query = new SqlCommand(command, connection);
-            //reader = query.ExecuteReader();
-            //reader.Read();
-            //count = Convert.ToInt32(reader[0].ToString());
-            //reader.Close();
-            // Наполнение Ролей Сотрудников
-            //command = "INSERT INTO [Роли_Сотрудников] (ID_Сотрудники, ID_Роли) VALUES(" + (count + 1) + "," + Convert.ToInt32(comboBox1.SelectedItem) + ")";
-            //query = new SqlCommand(command, connection);
-            //query.ExecuteNonQuery();
             MessageBox.Show("Сотрудник был успешно зарегистрирован");
         }
         
         private void Back_Click(object sender, EventArgs e)
         {
             Pages.Admin admin = new Admin();
-            this.Close();
+            this.Hide();
             admin.ShowDialog();
+        }
+
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RegistraciaRoli registraciaRoli = new RegistraciaRoli();
+            this.Hide();
+            registraciaRoli.ShowDialog();
+        }
+
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RegistraciaKarty registraciaKarty = new RegistraciaKarty();
+            this.Hide();
+            registraciaKarty.ShowDialog();
         }
     }
 }

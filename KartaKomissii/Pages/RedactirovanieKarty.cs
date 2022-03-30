@@ -17,14 +17,14 @@ namespace Commission_map.Pages
         public RedactirovanieKarty()
         {
             InitializeComponent();
-            Load_Sotr();
+            Karty_Load();
         }
 
-        public void Load_Sotr()
+        public void Karty_Load()
         {
             SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
-            string command = "SELECT * FROM [Сотрудник]";
+            string command = "SELECT * FROM [Карта комиссии]";
             SqlCommand query = new SqlCommand(command, connection);
             SqlDataReader reader = query.ExecuteReader();
             while (reader.Read())
@@ -39,7 +39,8 @@ namespace Commission_map.Pages
         {
             SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
-            string command = "UPDATE FROM [Карта комиссии] SET ID_Сотрудник = '" + textBox2.Text + "', Дата начала = '" + dateTimePicker1.Value + "', Дата конца = '" + dateTimePicker2.Value + "' WHERE ID = " + (Karta.SelectedIndex + 1) + " ";
+            string command = "UPDATE FROM [Карта комиссии] SET ID_Сотрудник = '" + textBox2.Text + "', Дата начала = '" + dateTimePicker1.Value + "'" +
+                             ", Дата конца = '" + dateTimePicker2.Value + "' WHERE ID = " + (Karta.SelectedIndex + 1) + " ";
             SqlCommand query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
             connection.Close();
@@ -58,6 +59,20 @@ namespace Commission_map.Pages
             dateTimePicker2.Value = Convert.ToDateTime(reader[3].ToString());
             reader.Close();
             connection.Close();
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            Pages.Admin admin = new Pages.Admin();
+            this.Hide();
+            admin.ShowDialog();
+        }
+
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RedactirovanieSotr redactirovanieSotr = new Pages.RedactirovanieSotr();
+            this.Hide();
+            redactirovanieSotr.ShowDialog();
         }
     }
 }

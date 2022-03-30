@@ -148,7 +148,7 @@ namespace Commission_map.Pages
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(492, 135);
+            this.dataGridView1.Size = new System.Drawing.Size(495, 135);
             this.dataGridView1.TabIndex = 9;
             // 
             // button1
@@ -166,7 +166,7 @@ namespace Commission_map.Pages
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(746, 333);
+            this.ClientSize = new System.Drawing.Size(728, 229);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.roli);
@@ -178,6 +178,8 @@ namespace Commission_map.Pages
             this.Controls.Add(this.Back);
             this.Controls.Add(this.Exit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MaximumSize = new System.Drawing.Size(805, 370);
+            this.MinimumSize = new System.Drawing.Size(300, 240);
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";

@@ -38,7 +38,7 @@ namespace Commission_map.Pages
         private void Redact_Click(object sender, EventArgs e)
         {
             Pages.RedactirovanieSotr redactirovanie = new Pages.RedactirovanieSotr();
-            this.Close();
+            this.Hide();
             redactirovanie.ShowDialog();
         }
 
@@ -72,8 +72,6 @@ namespace Commission_map.Pages
             {
                 string command = "DELETE FROM " + viewTableNow + " = '" + Convert.ToInt32(dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected)) + "'";
                 AddFunction(command);
-                //command = viewTableUpdate + Convert.ToInt32(deletedLineNumber.Text);
-                //addFunction(command);
                 if (sotr.Checked == true) Sotr_CheckedChanged(sender, e);
                 if (sotr.Checked == true) Roli_CheckedChanged(sender, e);
                 if (karty.Checked == true) Karty_CheckedChanged(sender, e);
@@ -82,7 +80,7 @@ namespace Commission_map.Pages
         private void Back_Click(object sender, EventArgs e)
         {
             Autorizacia frm = new Autorizacia();
-            this.Hide();
+            this.Close();
             frm.Show();
         }
 
@@ -93,26 +91,35 @@ namespace Commission_map.Pages
 
         private void Sotr_CheckedChanged(object sender, EventArgs e)
         {
+            Form admin = new Form();
             string command = "SELECT * FROM [Сотрудник]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
             ViewFunction(command, lastIdCheck, getTableName);
+            dataGridView1.Size = new Size(460, 135);
+            Size = new Size(615, 240);
         }
 
         private void Roli_CheckedChanged(object sender, EventArgs e)
         {
+            Form admin = new Form();
             string command = "SELECT * FROM [Роль в текущей карте]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
             ViewFunction(command, lastIdCheck, getTableName);
+            dataGridView1.Size = new Size(345, 135);
+            Size = new Size(500, 240);
         }
 
         private void Karty_CheckedChanged(object sender, EventArgs e)
         {
+            Form admin = new Form();
             string command = "SELECT * FROM [Карта комиссии]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
             ViewFunction(command, lastIdCheck, getTableName);
+            dataGridView1.Size = new Size(650,135);
+            Size = new Size(805, 240);
         }
 
         public void ViewFunction(string command, string lastIdCheck, string getTableName)

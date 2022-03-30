@@ -88,8 +88,22 @@ namespace Commission_map.Pages
         private void Back_Click(object sender, EventArgs e)
         {
             Pages.Admin admin = new Admin();
-            this.Close();
+            this.Hide();
             admin.ShowDialog();
+        }
+
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RegistraciaSotr registraciaSotr = new RegistraciaSotr();
+            this.Hide();
+            registraciaSotr.ShowDialog();
+        }
+
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RegistraciaKarty registraciaKarty = new RegistraciaKarty();
+            this.Hide();
+            registraciaKarty.ShowDialog();
         }
     }
 }

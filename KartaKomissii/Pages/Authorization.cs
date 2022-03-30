@@ -23,7 +23,6 @@ namespace Commission_map
         {
             try
             {
-                MessageBox.Show(Classes.PassLogin.connectionString[0].ToString());
                 SqlConnection connection = new SqlConnection(Classes.PassLogin.connectionString[0].ToString());
                 connection.Open();
                 string command = "SELECT * FROM Пароли a LEFT JOIN[Роль в текущей карте] b ON a.ID_Сотрудника = b.ID_Сотрудника" +

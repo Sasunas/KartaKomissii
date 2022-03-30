@@ -49,8 +49,8 @@ namespace Commission_map.Pages
                 int count = Convert.ToInt32(reader[0].ToString());
                 reader.Close();
                 //Наполнение Карта комиссии
-                command = "INSERT INTO [Карта комиссии] (ID,ID_Сотрудника, Дата начала, Дата конца) VALUES(" + (count + 1) + ",'" + comboBox1.Text + "','" + dateTimePicker1.Text
-                                                                                              + "','" + dateTimePicker2.Text + "')";
+                command = "INSERT INTO [Карта комиссии] (ID,ID_Сотрудника, Дата начала, Дата конца) VALUES(" + (count + 1) + ",'" + comboBox1.Text + "','" + dateTimePicker1.Value
+                                                                                              + "','" + dateTimePicker2.Value + "')";
                 query = new SqlCommand(command, connection);
                 query.ExecuteNonQuery();
                 connection.Close();
@@ -64,8 +64,22 @@ namespace Commission_map.Pages
         private void Back_Click(object sender, EventArgs e)
         {
             Pages.Admin admin = new Admin();
-            this.Close();
+            this.Hide();
             admin.ShowDialog();
+        }
+
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RegistraciaSotr registraciaSotr = new RegistraciaSotr();
+            this.Hide();
+            registraciaSotr.ShowDialog();
+        }
+
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RegistraciaRoli registraciaRoli = new RegistraciaRoli();
+            this.Hide();
+            registraciaRoli.ShowDialog();
         }
     }
 }

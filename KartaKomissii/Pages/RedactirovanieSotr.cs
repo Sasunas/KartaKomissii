@@ -38,10 +38,12 @@ namespace Commission_map.Pages
         {
             SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
-            string command = "UPDATE FROM [Сотрудник] SET Фамилия = '"+ textBox1.Text + "', Имя = '" + textBox2.Text + "', Отчество = '" + textBox3.Text + "' WHERE ID = " + (Sotrud.SelectedIndex + 1) + " ";
+            string command = "UPDATE FROM [Сотрудник] SET Фамилия = '"+ familia.Text + "', Имя = '" + name.Text + "'," +
+                             " Отчество = '" + otchestvo.Text + "' WHERE ID = " + (Sotrud.SelectedIndex + 1) + " ";
             SqlCommand query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
-            command = "UPDATE FROM [Пароли] SET Логин = '" + textBox5.Text + "', Пароль = '" + textBox6.Text + "' WHERE ID_Сотрудника = " + (Sotrud.SelectedIndex + 1) + "";
+            command = "UPDATE FROM [Пароли] SET Логин = '" + password.Text + "', Пароль = '" + login.Text + "'" +
+                      " WHERE ID_Сотрудника = " + (Sotrud.SelectedIndex + 1) + "";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
             connection.Close();
@@ -55,13 +57,27 @@ namespace Commission_map.Pages
             SqlCommand query = new SqlCommand(command, connection);
             SqlDataReader reader = query.ExecuteReader();
             reader.Read();
-            textBox1.Text = reader[1].ToString();
-            textBox2.Text = reader[2].ToString();
-            textBox3.Text = reader[3].ToString();
-            textBox5.Text = reader[5].ToString();
-            textBox6.Text = reader[6].ToString();
+            familia.Text = reader[1].ToString();
+            name.Text = reader[2].ToString();
+            otchestvo.Text = reader[3].ToString();
+            password.Text = reader[5].ToString();
+            login.Text = reader[6].ToString();
             reader.Close();
             connection.Close();
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            Pages.Admin admin = new Pages.Admin();
+            this.Hide();
+            admin.ShowDialog();
+        }
+
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Pages.RedactirovanieKarty redactirovanieKarty = new Pages.RedactirovanieKarty();
+            this.Hide();
+            redactirovanieKarty.ShowDialog();
         }
     }
 }
