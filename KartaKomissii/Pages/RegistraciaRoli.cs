@@ -58,8 +58,8 @@ namespace Commission_map.Pages
                 SqlConnection connection = new SqlConnection(Sql);
                 connection.Open();
                 //Проверка существования Сотрудника у Роли в текущей карте
-                string command = "SELECT * FROM [Роль в текущей карте] WHERE ID_Карты_комиссии = '" + comboBox3.Text + "'" +
-                                                                           " AND ID_Сотрудника = '" + comboBox2.Text + "'";
+                string command = "SELECT * FROM [Роль в текущей карте] WHERE ID_Карты_комиссии = '" + (Convert.ToInt32(comboBox3.SelectedIndex.ToString()) + 1) + "'" +
+                                                                           " AND ID_Сотрудника = '" + (Convert.ToInt32(comboBox2.SelectedIndex.ToString()) + 1) + "'";
                 SqlCommand query = new SqlCommand(command, connection);
                 SqlDataReader reader = query.ExecuteReader();
                 reader.Read();
@@ -70,8 +70,9 @@ namespace Commission_map.Pages
                 else
                 {
                     //Наполнение Роли в текущей карте
-                    command = "INSERT INTO [Роль в текущей карте] (ID_Карты_комиссии,ID_Сотрудника, ID_Роли) VALUES('" + comboBox3.Text + "'" +
-                                                                            ", '" + comboBox2.Text + "', '" + comboBox1.Text + "')";
+                    command = "INSERT INTO [Роль в текущей карте] (ID_Карты_комиссии,ID_Сотрудника, ID_Роли) VALUES('" + (Convert.ToInt32(comboBox3.SelectedIndex.ToString()) + 1) + "'" +
+                                                                            ", '" + (Convert.ToInt32(comboBox2.SelectedIndex.ToString()) + 1) + "'" +
+                                                                            ", '" + (Convert.ToInt32(comboBox1.SelectedIndex.ToString()) + 1) + "')";
                     query = new SqlCommand(command, connection);
                     query.ExecuteNonQuery();
                     connection.Close();
