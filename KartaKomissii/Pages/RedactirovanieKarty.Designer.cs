@@ -41,13 +41,15 @@ namespace Commission_map.Pages
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.Back = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.status = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Redact
             // 
             this.Redact.BackColor = System.Drawing.Color.White;
             this.Redact.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Redact.Location = new System.Drawing.Point(108, 146);
+            this.Redact.Location = new System.Drawing.Point(108, 172);
             this.Redact.Name = "Redact";
             this.Redact.Size = new System.Drawing.Size(139, 23);
             this.Redact.TabIndex = 49;
@@ -152,7 +154,7 @@ namespace Commission_map.Pages
             // 
             this.Back.BackColor = System.Drawing.Color.White;
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Location = new System.Drawing.Point(15, 170);
+            this.Back.Location = new System.Drawing.Point(15, 196);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(87, 21);
             this.Back.TabIndex = 54;
@@ -160,12 +162,32 @@ namespace Commission_map.Pages
             this.Back.UseVisualStyleBackColor = false;
             this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(12, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "Состояние";
+            // 
+            // status
+            // 
+            this.status.FormattingEnabled = true;
+            this.status.Location = new System.Drawing.Point(108, 145);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(139, 21);
+            this.status.TabIndex = 56;
+            // 
             // RedactirovanieKarty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(253, 202);
+            this.ClientSize = new System.Drawing.Size(253, 235);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -201,5 +223,7 @@ namespace Commission_map.Pages
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button Back;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox status;
     }
 }

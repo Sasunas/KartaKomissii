@@ -43,7 +43,7 @@ namespace Commission_map.Pages
             count = Convert.ToInt32(reader[0].ToString());
             reader.Close();
             // Наполнение Паролей
-            command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox5.Text + "','" + textBox6.Text + "')";
+            command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox6.Text + "','" + textBox5.Text + "')";
             query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
             MessageBox.Show("Сотрудник был успешно зарегистрирован");

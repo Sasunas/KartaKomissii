@@ -13,7 +13,7 @@ namespace Commission_map.Pages
 {
     public partial class Admin : Form
     {
-        public string sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
+        public string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
         public Admin()
         {
             InitializeComponent();
@@ -45,33 +45,62 @@ namespace Commission_map.Pages
         private void Delete_Click(object sender, EventArgs e)
         {
             string viewTableNow = "";
-            string message = "Вы уверены, что хотите удалить строчку?";
-            string caption = "Удалить строчку";
+            string message = "Вы уверены, что хотите удалить строку?";
+            string caption = "Удалить строку";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
             result = MessageBox.Show(message, caption, buttons);
-            if(sotr.Checked == true)
+            if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                viewTableNow = "Сотрудник";
-            } 
-            else
-            {
-                if (roli.Checked == true)
+                if (sotr.Checked == true)
                 {
-                    viewTableNow = "Роль в текущей карте";
+                    //Удаление сотрудника со связанными данными в иных таблицах
+                    viewTableNow = "Сотрудник";
+                    string command = "DELETE FROM Пароли WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    AddFunction(command);
+                    command = "DELETE FROM [Роль в текущей карте] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    AddFunction(command);
+                    command = "SELECT * FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    SqlConnection connection = new SqlConnection(Sql);
+                    connection.Open();
+                    SqlCommand query = new SqlCommand(command, connection);
+                    SqlDataReader reader = query.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + reader[0].ToString() + "'";
+                        AddFunction(command);
+                    }
+                    connection.Close();
+                    reader.Close();
+                    command = "DELETE FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    AddFunction(command);
+                    command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    AddFunction(command);
                 }
                 else
                 {
-                    if (karty.Checked == true)
+                    // Удаление роли в карте комиссии
+                    if (roli.Checked == true)
                     {
-                        viewTableNow = "Карта комиссии";
+                        viewTableNow = "Роль в текущей карте";
+                        string command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                        AddFunction(command);
+                    }
+                    else
+                    {
+                        // Удаление карты комиссии со связанными данными в таблице Оценка по требованию
+                        if (karty.Checked == true)
+                        {
+                            MessageBox.Show("Карту комисси удалять не стоит.");
+                            viewTableNow = "Карта комиссии";
+                            string command = "DELETE FROM Оценка по требованию WHERE ID_Карта_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                            AddFunction(command);
+                            command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                            AddFunction(command);
+                        }
                     }
                 }
-            }
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                string command = "DELETE FROM " + viewTableNow + " = '" + Convert.ToInt32(dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected)) + "'";
-                AddFunction(command);
+                // обновление отображаемых данных
                 if (sotr.Checked == true) Sotr_CheckedChanged(sender, e);
                 if (sotr.Checked == true) Roli_CheckedChanged(sender, e);
                 if (karty.Checked == true) Karty_CheckedChanged(sender, e);
@@ -127,7 +156,7 @@ namespace Commission_map.Pages
             int i;
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-            SqlConnection sqlConnection = new SqlConnection(sql);
+            SqlConnection sqlConnection = new SqlConnection(Sql);
             sqlConnection.Open();
             SqlCommand sqlLastIdCheck = new SqlCommand(lastIdCheck, sqlConnection);
             SqlDataReader readerId = sqlLastIdCheck.ExecuteReader();
@@ -166,7 +195,7 @@ namespace Commission_map.Pages
 
         public void AddFunction(string command)
         {
-            SqlConnection sqlConnection = new SqlConnection(sql);
+            SqlConnection sqlConnection = new SqlConnection(Sql);
             sqlConnection.Open();
             SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -175,6 +204,8 @@ namespace Commission_map.Pages
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            int row = Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString());
+            MessageBox.Show(""+row);
             Int32 selectedRowCount =
         dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount > 0)

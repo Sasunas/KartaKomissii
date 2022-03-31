@@ -32,6 +32,14 @@ namespace Commission_map.Pages
                 Karta.Items.Add(reader[0].ToString().Trim());
             }
             reader.Close();
+            command = "SELECT * FROM [Статус]";
+            query = new SqlCommand(command, connection);
+            reader = query.ExecuteReader();
+            while (reader.Read())
+            {
+                status.Items.Add(reader[0].ToString().Trim());
+            }
+            reader.Close();
             connection.Close();
         }
 
@@ -40,7 +48,8 @@ namespace Commission_map.Pages
             SqlConnection connection = new SqlConnection(Sql);
             connection.Open();
             string command = "UPDATE FROM [Карта комиссии] SET ID_Сотрудник = '" + textBox2.Text + "', Дата начала = '" + dateTimePicker1.Value + "'" +
-                             ", Дата конца = '" + dateTimePicker2.Value + "' WHERE ID = " + (Karta.SelectedIndex + 1) + " ";
+                             ", Дата конца = '" + dateTimePicker2.Value + "', Статус = '" + status.SelectedIndex.ToString() + "'" +
+                             " WHERE ID = " + (Karta.SelectedIndex + 1) + " ";
             SqlCommand query = new SqlCommand(command, connection);
             query.ExecuteNonQuery();
             connection.Close();
@@ -57,6 +66,7 @@ namespace Commission_map.Pages
             textBox2.Text = reader[1].ToString();
             dateTimePicker1.Value = Convert.ToDateTime(reader[2].ToString());
             dateTimePicker2.Value = Convert.ToDateTime(reader[3].ToString());
+            status.SelectedIndex = Convert.ToInt32(reader[5].ToString()) + 1;
             reader.Close();
             connection.Close();
         }
