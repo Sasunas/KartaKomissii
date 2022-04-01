@@ -8,24 +8,113 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Commission_map.Classes;
 
 namespace Commission_map.Pages
 {
+
+    public class DisposeExample
+    {
+        // Базовый класс, реализующий IDisposable.
+        // Внедряя IDisposable, вы объявляете, что
+        // экземпляры этого типа выделяют дефицитные ресурсы.
+        public class MyResource : IDisposable
+        {
+            // Указатель на внешний неуправляемый ресурс.
+            private IntPtr handle;
+            // Другой управляемый ресурс, который использует этот класс.
+            private Component component = new Component();
+            // Отслеживаем, был ли вызван Dispose.
+            private bool disposed = false;
+
+            // Конструктор класса.
+            public MyResource(IntPtr handle)
+            {
+                this.handle = handle;
+            }
+
+            // Реализовать IDisposable.
+            // Не делайте этот метод виртуальным.
+            // Производный класс не должен переопределять этот метод.
+            public void Dispose()
+            {
+                Dispose(disposing: true);
+                // Этот объект будет очищен методом Dispose.
+                // Следовательно, вы должны вызвать GC.SuppressFinalize, чтобы
+                // убрать этот объект из очереди финализации
+                // и предотвратить код финализации для этого объекта
+                // от выполнения во второй раз.
+                GC.SuppressFinalize(this);
+            }
+
+            // Dispose(bool disposing) выполняется в двух разных сценариях.
+            // Если удаление равно true, метод был вызван напрямую
+            // или косвенно с помощью пользовательского кода. Управляемые и неуправляемые ресурсы
+            // можно удалить.
+            // Если удаление равно false, метод был вызван
+            // время выполнения внутри финализатора, и вы не должны ссылаться
+            // другие объекты. Только неуправляемые ресурсы могут быть удалены.
+            protected virtual void Dispose(bool disposing)
+            {
+                // Проверяем, не был ли уже вызван метод Dispose.
+                if (!this.disposed)
+                {
+                    // Если удаление равно true, удалить все управляемые
+                    // и неуправляемые ресурсы.
+                    if (disposing)
+                    {
+                        // Удаление управляемых ресурсов.
+                        component.Dispose();
+                    }
+
+                    // Вызываем соответствующие методы для очистки
+                    // неуправляемые ресурсы здесь.
+                    // Если удаление ложно,
+                    // выполняется только следующий код.
+                    CloseHandle(handle);
+                    handle = IntPtr.Zero;
+
+                    // Обратите внимание, удаление было выполнено.
+                    disposed = true;
+                }
+            }
+
+            // Используем взаимодействие для вызова необходимого метода
+            // для очистки неуправляемого ресурса.
+            [System.Runtime.InteropServices.DllImport("Kernel32")]
+            private extern static Boolean CloseHandle(IntPtr handle);
+
+            // Использовать синтаксис финализатора C# для кода финализации.
+            // Этот финализатор запустится, только если метод Dispose
+            // не вызывается.
+            // Это дает вашему базовому классу возможность финализироваться.
+            // Не предоставляйте финализатор в типах, производных от этого класса.
+            ~MyResource()
+            {
+                // Не пересоздавайте здесь код очистки Dispose.
+                // Вызов Dispose(disposing: false) оптимален с точки зрения
+                // Читабельность и ремонтопригодность.
+                Dispose(disposing: false);
+            }
+        }
+    }
+
     public partial class Admin : Form
     {
-        public string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
+        Modules modules = new Modules();
         public Admin()
         {
             InitializeComponent();
             Admin_Load();
         }
+
         public void Admin_Load()
         {
             sotr.Checked = true;
             string command = "SELECT * FROM [Сотрудник]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
-            ViewFunction(command, lastIdCheck, getTableName);
+            modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
         }
 
         private void Regist_Click(object sender, EventArgs e)
@@ -56,26 +145,22 @@ namespace Commission_map.Pages
                 {
                     //Удаление сотрудника со связанными данными в иных таблицах
                     viewTableNow = "Сотрудник";
-                    string command = "DELETE FROM Пароли WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                    AddFunction(command);
-                    command = "DELETE FROM [Роль в текущей карте] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                    AddFunction(command);
-                    command = "SELECT * FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                    SqlConnection connection = new SqlConnection(Sql);
-                    connection.Open();
-                    SqlCommand query = new SqlCommand(command, connection);
-                    SqlDataReader reader = query.ExecuteReader();
-                    while (reader.Read())
+                    string _command = "DELETE FROM Пароли WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Command(_command);
+                    _command = "DELETE FROM [Роль в текущей карте] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Command(_command);
+                    _command = "SELECT * FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Reader(_command, out SqlDataReader _reader);
+                    while (_reader.Read())
                     {
-                        command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + reader[0].ToString() + "'";
-                        AddFunction(command);
+                        _command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + _reader[0].ToString() + "'";
+                        modules.Command(_command);
                     }
-                    connection.Close();
-                    reader.Close();
-                    command = "DELETE FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                    AddFunction(command);
-                    command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                    AddFunction(command);
+                    _reader.Close();
+                    _command = "DELETE FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Command(_command);
+                    _command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Command(_command);
                 }
                 else
                 {
@@ -83,8 +168,8 @@ namespace Commission_map.Pages
                     if (roli.Checked == true)
                     {
                         viewTableNow = "Роль в текущей карте";
-                        string command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                        AddFunction(command);
+                        string _command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                        modules.Command(_command);
                     }
                     else
                     {
@@ -93,10 +178,10 @@ namespace Commission_map.Pages
                         {
                             MessageBox.Show("Карту комисси удалять не стоит.");
                             viewTableNow = "Карта комиссии";
-                            string command = "DELETE FROM Оценка по требованию WHERE ID_Карта_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                            AddFunction(command);
-                            command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
-                            AddFunction(command);
+                            string _command = "DELETE FROM Оценка по требованию WHERE ID_Карта_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                            modules.Command(_command);
+                            _command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                            modules.Command(_command);
                         }
                     }
                 }
@@ -120,86 +205,32 @@ namespace Commission_map.Pages
 
         private void Sotr_CheckedChanged(object sender, EventArgs e)
         {
-            Form admin = new Form();
-            string command = "SELECT * FROM [Сотрудник]";
+            string _command = "SELECT * FROM [Сотрудник]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Сотрудник'";
-            ViewFunction(command, lastIdCheck, getTableName);
+            modules.AddToGrid(_command, lastIdCheck, getTableName, dataGridView1);
             dataGridView1.Size = new Size(460, 135);
             Size = new Size(615, 240);
         }
 
         private void Roli_CheckedChanged(object sender, EventArgs e)
         {
-            Form admin = new Form();
             string command = "SELECT * FROM [Роль в текущей карте]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
-            ViewFunction(command, lastIdCheck, getTableName);
+            modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
             dataGridView1.Size = new Size(345, 135);
             Size = new Size(500, 240);
         }
 
         private void Karty_CheckedChanged(object sender, EventArgs e)
         {
-            Form admin = new Form();
             string command = "SELECT * FROM [Карта комиссии]";
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
-            ViewFunction(command, lastIdCheck, getTableName);
+            modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
             dataGridView1.Size = new Size(650,135);
             Size = new Size(805, 240);
-        }
-
-        public void ViewFunction(string command, string lastIdCheck, string getTableName)
-        {
-            int i;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            SqlConnection sqlConnection = new SqlConnection(Sql);
-            sqlConnection.Open();
-            SqlCommand sqlLastIdCheck = new SqlCommand(lastIdCheck, sqlConnection);
-            SqlDataReader readerId = sqlLastIdCheck.ExecuteReader();
-            readerId.Read();
-            int lastId = Convert.ToInt32(readerId[0]);
-            readerId.Close();
-            SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-            List<string[]> data = new List<string[]>();
-            while (reader.Read())
-            {
-                data.Add(new string[lastId]);
-                for (i = 0; i < lastId; i++)
-                {
-                    data[data.Count - 1][i] = reader[i].ToString().Trim();
-                }
-            }
-            reader.Close();
-            SqlCommand getName = new SqlCommand(getTableName, sqlConnection);
-            reader = getName.ExecuteReader();
-            i = 0;
-            while (reader.Read())
-            {
-                DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-                this.dataGridView1.Columns.Add(column);
-                dataGridView1.Columns[i].HeaderText = reader[0].ToString().Trim();
-                i++;
-            }
-            reader.Close();
-            foreach (string[] s in data)
-            {
-                dataGridView1.Rows.Add(s);
-            }
-            sqlConnection.Close();
-        }
-
-        public void AddFunction(string command)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Sql);
-            sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
-            sqlCommand.ExecuteNonQuery();
-            sqlConnection.Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -207,7 +238,7 @@ namespace Commission_map.Pages
             int row = Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString());
             MessageBox.Show(""+row);
             Int32 selectedRowCount =
-        dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount > 0)
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();

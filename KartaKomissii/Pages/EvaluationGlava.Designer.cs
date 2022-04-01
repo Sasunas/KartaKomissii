@@ -155,7 +155,7 @@ namespace Commission_map.Pages
             // 
             this.Link.BackColor = System.Drawing.Color.White;
             this.Link.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Link.Location = new System.Drawing.Point(521, 9);
+            this.Link.Location = new System.Drawing.Point(523, 9);
             this.Link.Name = "Link";
             this.Link.Size = new System.Drawing.Size(100, 21);
             this.Link.TabIndex = 78;
@@ -165,7 +165,7 @@ namespace Commission_map.Pages
             // 
             // commentBox
             // 
-            this.commentBox.Location = new System.Drawing.Point(457, 96);
+            this.commentBox.Location = new System.Drawing.Point(457, 116);
             this.commentBox.Name = "commentBox";
             this.commentBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.commentBox.Size = new System.Drawing.Size(166, 87);

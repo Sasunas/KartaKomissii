@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Commission_map.Classes;
 
 namespace Commission_map.Pages
 {
     public partial class EvaluationEmployee : Form
     {
+        Modules modules = new Modules();
         string Lowlevel;
         string Mediumlevel;
         string Hightlevel;
-        readonly string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
         public EvaluationEmployee()
         {
             InitializeComponent();
@@ -30,11 +31,8 @@ namespace Commission_map.Pages
             try
             {
                 //загрузка перечня Блоков оценивания
-                SqlConnection _connection = new SqlConnection(Sql);
-                _connection.Open();
                 string _command = "SELECT * FROM Блоки";
-                SqlCommand _query = new SqlCommand(_command, _connection);
-                SqlDataReader _reader = _query.ExecuteReader();
+                modules.Reader(_command, out SqlDataReader _reader);
                 Block.Items.Clear();
                 while (_reader.Read())
                 {
@@ -43,15 +41,13 @@ namespace Commission_map.Pages
                 _reader.Close();
                 //загрузка перечня Архетипов оценивания
                 _command = "SELECT * FROM Архетипы";
-                _query = new SqlCommand(_command, _connection);
-                _reader = _query.ExecuteReader();
+                modules.Reader(_command, out _reader);
                 Archetype.Items.Clear();
                 while (_reader.Read())
                 {
                     Archetype.Items.Add(_reader[1]);
                 }
                 _reader.Close();
-                _connection.Close();
             }
             catch (Exception exc)
             {
@@ -84,11 +80,8 @@ namespace Commission_map.Pages
             {
                 int _block = Convert.ToInt32(Block.SelectedIndex) + 1;
                 int _arch = Convert.ToInt32(Archetype.SelectedIndex) + 1;
-                SqlConnection _connection = new SqlConnection(Sql);
-                _connection.Open();
                 string _command = "SELECT * FROM [Требование] WHERE ID_Архетипа = " + _arch + " AND ID_Блока = " + _block + "";
-                SqlCommand _query = new SqlCommand(_command, _connection);
-                SqlDataReader _reader = _query.ExecuteReader();
+                modules.Reader(_command, out SqlDataReader _reader);
                 _reader.Read();
                 if (_reader.HasRows == true)
                 {
@@ -124,7 +117,6 @@ namespace Commission_map.Pages
                     MessageBox.Show("Архетип не был выбран");
                 }
                 _reader.Close();
-                _connection.Close();
             }
             catch (Exception exc)
             {
@@ -147,29 +139,22 @@ namespace Commission_map.Pages
                 {
                     int _block = Convert.ToInt32(Block.SelectedIndex) + 1;
                     int _arch = Convert.ToInt32(Archetype.SelectedIndex) + 1;
-                    SqlConnection _connection = new SqlConnection(Sql);
-                    _connection.Open();
                     string _command = "SELECT * FROM [Требование] WHERE ID_Архетипа = " + _arch + " AND ID_Блока = " + _block + "";
-                    SqlCommand _query = new SqlCommand(_command, _connection);
-                    SqlDataReader _reader = _query.ExecuteReader();
+                    modules.Reader(_command, out SqlDataReader _reader);
                     _reader.Read();
                     if (_reader.HasRows == true)
                     {
                         if (Deskription.Text != "")
                         {
-                            _connection = new SqlConnection(Sql);
-                            _connection.Open();
                             //Вычисление длинны
                             _command = "SELECT COUNT(*) as count FROM [Оценка по требованию]";
-                            _query = new SqlCommand(_command, _connection);
-                            _reader = _query.ExecuteReader();
+                            modules.Reader(_command, out _reader);
                             _reader.Read();
                             int count = Convert.ToInt32(_reader[0]);
                             _reader.Close();
                             //Поиск ID требования
                             _command = "SELECT [Требование].ID FROM [Требование] WHERE ID_Блока = " + _block + " AND ID_Архетипа = " + _arch + "";
-                            _query = new SqlCommand(_command, _connection);
-                            _reader = _query.ExecuteReader();
+                            modules.Reader(_command, out _reader);
                             _reader.Read();
                             int _trebovania = Convert.ToInt32(_reader[0]);
                             _reader.Close();
@@ -177,12 +162,10 @@ namespace Commission_map.Pages
                             _command = "INSERT INTO [Оценка по требованию] (ID, ID_Требования, ID_Карта_комиссии, ID_Сотрудника, Оценка, Дата) VALUES ("
                                 + (count + 1) + ", " + _trebovania + ", " + Classes.OcenkaTreb.ID_Karta_Komissii
                                 + ", " + Classes.PassLogin.ID + ", '" + ocenkaBox.Text + "', '" + DateTime.Today + "')";
-                            _query = new SqlCommand(_command, _connection);
-                            _query.ExecuteNonQuery();
+                            modules.Command(_command);
                             MessageBox.Show("Оценка была успешно выставлена");
                             Classes.OcenkaTreb.ID_OcenkaTreb = count;
                             _reader.Close();
-                            _connection.Close();
                         }
                         else
                         {
@@ -205,12 +188,9 @@ namespace Commission_map.Pages
         {
             try
             {
-                SqlConnection _connection = new SqlConnection(Sql);
-                _connection.Open();
                 //Добавление комментария
                 string _command = "update [Оценка по требованию] set Комментарий = '" + commentBox.Text + "' where ID = " + (Classes.OcenkaTreb.ID_OcenkaTreb + 1) + " ";
-                SqlCommand _query = new SqlCommand(_command, _connection);
-                _query.ExecuteNonQuery();
+                modules.Command(_command);
             }
             catch (Exception exc)
             {
@@ -222,14 +202,10 @@ namespace Commission_map.Pages
         {
             try
             {
-                SqlConnection _connection = new SqlConnection(Sql);
-                _connection.Open();
-                Classes.OcenkaTreb.Link_Sotryd = linkBox.Text;
+                OcenkaTreb.Link_Sotryd = linkBox.Text;
                 //Копирование в БД ссылки на гит работы Сотрудника
                 string _command = "update [Карта комиссии] set Ссылка = '" + Classes.OcenkaTreb.Link_Sotryd + "' where ID = " + (Classes.OcenkaTreb.ID_Karta_Komissii) + " ";
-                SqlCommand _query = new SqlCommand(_command, _connection);
-                _query.ExecuteNonQuery();
-                _connection.Close();
+                modules.Command(_command);
             }
             catch (Exception exc)
             {

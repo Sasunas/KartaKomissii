@@ -115,7 +115,7 @@ namespace Commission_map.Pages
             // 
             // commentBox
             // 
-            this.commentBox.Location = new System.Drawing.Point(358, 108);
+            this.commentBox.Location = new System.Drawing.Point(358, 137);
             this.commentBox.Name = "commentBox";
             this.commentBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.commentBox.Size = new System.Drawing.Size(166, 87);

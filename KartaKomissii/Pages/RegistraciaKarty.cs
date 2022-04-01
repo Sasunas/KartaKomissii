@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Commission_map.Classes;
 
 namespace Commission_map.Pages
 {
     public partial class RegistraciaKarty : Form
     {
-        public string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
+        Modules modules = new Modules();
         public RegistraciaKarty()
         {
             InitializeComponent();
@@ -22,38 +23,29 @@ namespace Commission_map.Pages
 
         public void Load_Sotr()
         { 
-            SqlConnection connection = new SqlConnection(Sql);
-            connection.Open();
-            string command = "SELECT * FROM [Сотрудник]";
-            SqlCommand query = new SqlCommand(command, connection);
-            SqlDataReader reader = query.ExecuteReader();
-            while (reader.Read())
+            string _command = "SELECT * FROM [Сотрудник]";
+            modules.Reader(_command, out SqlDataReader _reader);
+            while (_reader.Read())
             {
-                comboBox1.Items.Add(reader[1].ToString().Trim() + " " + reader[2].ToString().Trim() + " " + reader[3].ToString().Trim());
+                comboBox1.Items.Add(_reader[1].ToString().Trim() + " " + _reader[2].ToString().Trim() + " " + _reader[3].ToString().Trim());
             }
-            reader.Close();
-            connection.Close();
+            _reader.Close();
         }
 
         private void Regist_Click(object sender, EventArgs e)
         {
             try
             {
-                SqlConnection connection = new SqlConnection(Sql);
-                connection.Open();
                 //Рассчёт длины Карта комиссии
-                string command = "SELECT COUNT(*) FROM [Карта комиссии]";
-                SqlCommand query = new SqlCommand(command, connection);
-                SqlDataReader reader = query.ExecuteReader();
-                reader.Read();
-                int count = Convert.ToInt32(reader[0].ToString());
-                reader.Close();
+                string _command = "SELECT COUNT(*) FROM [Карта комиссии]";
+                modules.Reader(_command, out SqlDataReader _reader);
+                _reader.Read();
+                int count = Convert.ToInt32(_reader[0].ToString());
+                _reader.Close();
                 //Наполнение Карта комиссии
-                command = "INSERT INTO [Карта комиссии] (ID,ID_Сотрудника, Дата начала, Дата конца) VALUES(" + (count + 1) + ",'" + comboBox1.Text + "','" + dateTimePicker1.Value
+                _command = "INSERT INTO [Карта комиссии] (ID,ID_Сотрудника, Дата начала, Дата конца) VALUES(" + (count + 1) + ",'" + comboBox1.Text + "','" + dateTimePicker1.Value
                                                                                               + "','" + dateTimePicker2.Value + "')";
-                query = new SqlCommand(command, connection);
-                query.ExecuteNonQuery();
-                connection.Close();
+                modules.Command(_command);
             }
             catch(Exception exp)
             {

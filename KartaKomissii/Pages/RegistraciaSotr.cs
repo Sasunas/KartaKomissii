@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Commission_map.Classes;
 
 namespace Commission_map.Pages
 {
     public partial class RegistraciaSotr : Form
     {
-        public string Sql = "Data Source =PIT48\\SADYKOVAR;Initial Catalog=KK;User ID=Billy;Password=123456";
+        Modules modules = new Modules();
         public RegistraciaSotr()
         {
             InitializeComponent();
@@ -21,31 +22,25 @@ namespace Commission_map.Pages
 
         private void Regist_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(Sql);
-            connection.Open();
             //Рассчёт длины Сотрудников
-            string command = "SELECT COUNT(*) FROM [Сотрудник]";
-            SqlCommand query = new SqlCommand(command, connection);
-            SqlDataReader reader = query.ExecuteReader();
-            reader.Read();
-            int count = Convert.ToInt32(reader[0].ToString());
-            reader.Close();
+            string _command = "SELECT COUNT(*) FROM [Сотрудник]";
+            modules.Reader(_command, out SqlDataReader _reader);
+            _reader.Read();
+            int count = Convert.ToInt32(_reader[0].ToString());
+            _reader.Close();
             //Наполнение Сотрудников
-            command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + textBox1.Text + "', '" + textBox2.Text
+            _command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + textBox1.Text + "', '" + textBox2.Text
                                                                                           + "', '" + textBox3.Text + "')";
-            query = new SqlCommand(command, connection);
-            query.ExecuteNonQuery();
+            modules.Command(_command);
             //Рассчёт длины Паролей
-            command = "SELECT COUNT(*) FROM [Пароли]"; 
-            query = new SqlCommand(command, connection);
-            reader = query.ExecuteReader();
-            reader.Read();
-            count = Convert.ToInt32(reader[0].ToString());
-            reader.Close();
+            _command = "SELECT COUNT(*) FROM [Пароли]";
+            modules.Reader(_command, out _reader);
+            _reader.Read();
+            count = Convert.ToInt32(_reader[0].ToString());
+            _reader.Close();
             // Наполнение Паролей
-            command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox6.Text + "','" + textBox5.Text + "')";
-            query = new SqlCommand(command, connection);
-            query.ExecuteNonQuery();
+            _command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox6.Text + "','" + textBox5.Text + "')";
+            modules.Command(_command);
             MessageBox.Show("Сотрудник был успешно зарегистрирован");
         }
         

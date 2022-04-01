@@ -51,12 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Modules.cs" />
     <Compile Include="Classes\OcenkaTreb.cs" />
     <Compile Include="Classes\PassLogin.cs" />
     <Compile Include="Classes\RolvKarte.cs" />
-    <Compile Include="Pages\Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Pages\Admin.cs" />
     <Compile Include="Pages\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
