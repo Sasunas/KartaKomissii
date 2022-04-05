@@ -14,7 +14,8 @@ namespace Commission_map.Pages
 {
     public partial class EvaluationGlava : Form
     {
-        Modules modules = new Modules();
+       private static IntPtr handle;
+        Modules modules = new Modules(handle);
         string Lowlevel;
         string Mediumlevel;
         string Hightlevel;

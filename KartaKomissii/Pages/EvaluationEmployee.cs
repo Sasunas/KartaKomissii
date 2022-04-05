@@ -14,7 +14,8 @@ namespace Commission_map.Pages
 {
     public partial class EvaluationEmployee : Form
     {
-        Modules modules = new Modules();
+        private static IntPtr handle;
+        Modules modules = new Modules(handle);
         string Lowlevel;
         string Mediumlevel;
         string Hightlevel;
@@ -48,6 +49,8 @@ namespace Commission_map.Pages
                     Archetype.Items.Add(_reader[1]);
                 }
                 _reader.Close();
+                modules.Close();
+
             }
             catch (Exception exc)
             {
@@ -117,6 +120,7 @@ namespace Commission_map.Pages
                     MessageBox.Show("Архетип не был выбран");
                 }
                 _reader.Close();
+                modules.Close();
             }
             catch (Exception exc)
             {

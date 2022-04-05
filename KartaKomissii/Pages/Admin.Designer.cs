@@ -121,10 +121,10 @@ namespace Commission_map.Pages
             this.karty.Location = new System.Drawing.Point(308, 15);
             this.karty.MaximumSize = new System.Drawing.Size(0, 23);
             this.karty.Name = "karty";
-            this.karty.Size = new System.Drawing.Size(110, 17);
+            this.karty.Size = new System.Drawing.Size(108, 17);
             this.karty.TabIndex = 7;
             this.karty.TabStop = true;
-            this.karty.Text = "Карты комиссии";
+            this.karty.Text = "Карта комиссии";
             this.karty.UseVisualStyleBackColor = true;
             this.karty.CheckedChanged += new System.EventHandler(this.Karty_CheckedChanged);
             // 

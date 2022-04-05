@@ -13,95 +13,10 @@ using Commission_map.Classes;
 namespace Commission_map.Pages
 {
 
-    public class DisposeExample
-    {
-        // Базовый класс, реализующий IDisposable.
-        // Внедряя IDisposable, вы объявляете, что
-        // экземпляры этого типа выделяют дефицитные ресурсы.
-        public class MyResource : IDisposable
-        {
-            // Указатель на внешний неуправляемый ресурс.
-            private IntPtr handle;
-            // Другой управляемый ресурс, который использует этот класс.
-            private Component component = new Component();
-            // Отслеживаем, был ли вызван Dispose.
-            private bool disposed = false;
-
-            // Конструктор класса.
-            public MyResource(IntPtr handle)
-            {
-                this.handle = handle;
-            }
-
-            // Реализовать IDisposable.
-            // Не делайте этот метод виртуальным.
-            // Производный класс не должен переопределять этот метод.
-            public void Dispose()
-            {
-                Dispose(disposing: true);
-                // Этот объект будет очищен методом Dispose.
-                // Следовательно, вы должны вызвать GC.SuppressFinalize, чтобы
-                // убрать этот объект из очереди финализации
-                // и предотвратить код финализации для этого объекта
-                // от выполнения во второй раз.
-                GC.SuppressFinalize(this);
-            }
-
-            // Dispose(bool disposing) выполняется в двух разных сценариях.
-            // Если удаление равно true, метод был вызван напрямую
-            // или косвенно с помощью пользовательского кода. Управляемые и неуправляемые ресурсы
-            // можно удалить.
-            // Если удаление равно false, метод был вызван
-            // время выполнения внутри финализатора, и вы не должны ссылаться
-            // другие объекты. Только неуправляемые ресурсы могут быть удалены.
-            protected virtual void Dispose(bool disposing)
-            {
-                // Проверяем, не был ли уже вызван метод Dispose.
-                if (!this.disposed)
-                {
-                    // Если удаление равно true, удалить все управляемые
-                    // и неуправляемые ресурсы.
-                    if (disposing)
-                    {
-                        // Удаление управляемых ресурсов.
-                        component.Dispose();
-                    }
-
-                    // Вызываем соответствующие методы для очистки
-                    // неуправляемые ресурсы здесь.
-                    // Если удаление ложно,
-                    // выполняется только следующий код.
-                    CloseHandle(handle);
-                    handle = IntPtr.Zero;
-
-                    // Обратите внимание, удаление было выполнено.
-                    disposed = true;
-                }
-            }
-
-            // Используем взаимодействие для вызова необходимого метода
-            // для очистки неуправляемого ресурса.
-            [System.Runtime.InteropServices.DllImport("Kernel32")]
-            private extern static Boolean CloseHandle(IntPtr handle);
-
-            // Использовать синтаксис финализатора C# для кода финализации.
-            // Этот финализатор запустится, только если метод Dispose
-            // не вызывается.
-            // Это дает вашему базовому классу возможность финализироваться.
-            // Не предоставляйте финализатор в типах, производных от этого класса.
-            ~MyResource()
-            {
-                // Не пересоздавайте здесь код очистки Dispose.
-                // Вызов Dispose(disposing: false) оптимален с точки зрения
-                // Читабельность и ремонтопригодность.
-                Dispose(disposing: false);
-            }
-        }
-    }
-
     public partial class Admin : Form
     {
-        Modules modules = new Modules();
+       private static IntPtr handle;
+        Modules modules = new Modules(handle);
         public Admin()
         {
             InitializeComponent();
@@ -161,6 +76,7 @@ namespace Commission_map.Pages
                     modules.Command(_command);
                     _command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                     modules.Command(_command);
+                    modules.Close();
                 }
                 else
                 {
@@ -211,6 +127,7 @@ namespace Commission_map.Pages
             modules.AddToGrid(_command, lastIdCheck, getTableName, dataGridView1);
             dataGridView1.Size = new Size(460, 135);
             Size = new Size(615, 240);
+            modules.Dispose();
         }
 
         private void Roli_CheckedChanged(object sender, EventArgs e)
@@ -221,6 +138,7 @@ namespace Commission_map.Pages
             modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
             dataGridView1.Size = new Size(345, 135);
             Size = new Size(500, 240);
+            modules.Dispose();
         }
 
         private void Karty_CheckedChanged(object sender, EventArgs e)
@@ -231,6 +149,7 @@ namespace Commission_map.Pages
             modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
             dataGridView1.Size = new Size(650,135);
             Size = new Size(805, 240);
+            modules.Dispose();
         }
 
         private void Button1_Click(object sender, EventArgs e)

@@ -15,7 +15,9 @@ namespace Commission_map
 {
     public partial class Autorizacia : Form
     {
-        Modules modules = new Modules();
+        readonly string Sql = Classes.PassLogin.connectionString[0].ToString();
+        private static IntPtr handle;
+        Modules modules = new Modules(handle);
         public Autorizacia()
         {
             InitializeComponent();
@@ -24,11 +26,12 @@ namespace Commission_map
         private void Avtorizacia_Click(object sender, EventArgs e)
         {
             try
-            {
+            {      
                 string _command = "SELECT * FROM Пароли a LEFT JOIN[Роль в текущей карте] b ON a.ID_Сотрудника = b.ID_Сотрудника" +
                     " LEFT JOIN[Карта комиссии] c ON b.ID_Карты_комиссии = c.ID " +
                     " WHERE a.Логин = '" + textBox1.Text + "' and c.ID_Статуса = 1";
                 modules.Reader(_command, out SqlDataReader _reader);
+                //
                 _reader.Read();
                 if (_reader.HasRows == true)
                 {
@@ -52,6 +55,8 @@ namespace Commission_map
                             {
                                 Classes.RolvKarte.Role = value;
                             }
+                            _reader.Close();
+                            modules.Close();
                             MessageBox.Show("Вы Авторизованы");
                             if (Classes.RolvKarte.Role == 1)
                             {
@@ -88,7 +93,7 @@ namespace Commission_map
                                             MessageBox.Show("Вы Администратор");
                                             Pages.Admin admin = new Pages.Admin();
                                             this.Hide();
-                                            admin.Show(); ;
+                                            admin.Show();
                                             break;
                                         }
                                         else
@@ -103,18 +108,21 @@ namespace Commission_map
                     else
                     {
                         MessageBox.Show("Неправильный Пароль");
+                        _reader.Close();
+                        modules.Close();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Неправильный Логин");
+                    _reader.Close();
+                    modules.Close();
                 }
-                _reader.Close();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }      
+            }
         }
         private void Exit_Click(object sender, EventArgs e)
         {

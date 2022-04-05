@@ -14,7 +14,8 @@ namespace Commission_map.Pages
 {
     public partial class RegistraciaKarty : Form
     {
-        Modules modules = new Modules();
+        private static IntPtr handle;
+        Modules modules = new Modules(handle);
         public RegistraciaKarty()
         {
             InitializeComponent();
