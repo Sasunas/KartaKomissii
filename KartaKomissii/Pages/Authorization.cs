@@ -26,7 +26,7 @@ namespace Commission_map
         private void Avtorizacia_Click(object sender, EventArgs e)
         {
             try
-            {      
+            {
                 string _command = "SELECT * FROM Пароли a LEFT JOIN[Роль в текущей карте] b ON a.ID_Сотрудника = b.ID_Сотрудника" +
                     " LEFT JOIN[Карта комиссии] c ON b.ID_Карты_комиссии = c.ID " +
                     " WHERE a.Логин = '" + textBox1.Text + "' and c.ID_Статуса = 1";
@@ -129,64 +129,5 @@ namespace Commission_map
             Application.Exit();
         }
 
-        //Можно суда даже не смотреть это потом будет удалено(использовалось только для юнит теста)
-        public int Avtorizacia_Click1111111(string A, string B)
-        {
-            SqlConnection connection = new SqlConnection(Classes.PassLogin.connectionString[0].ToString());
-            connection.Open();
-            string command = "SELECT * FROM Пароли a LEFT JOIN [Роль в текущей карте] b ON a.ID_Сотрудника = b.ID_Сотрудника WHERE a.Логин = '" + A + "'";
-            SqlCommand query = new SqlCommand(command, connection);
-            SqlDataReader reader = query.ExecuteReader();
-            int ret = 0;
-            reader.Read();
-            if (reader.HasRows == true)
-            {
-                if (int.TryParse(reader[0].ToString(), out int value))
-                {
-                    Classes.PassLogin.ID = value;
-                }
-                Classes.PassLogin.Logins = reader[1].ToString();
-                Classes.PassLogin.Passwords = reader[2].ToString();
-                if (int.TryParse(reader[3].ToString(), out value))
-                {
-                    Classes.RolvKarte.IDOcenkaSotrydnika = value;
-                }           
-                if (int.TryParse(reader[5].ToString(), out value))
-                {
-                    Classes.RolvKarte.Role = value;
-                }               
-                if ("123" == B)
-                {
-                    MessageBox.Show("Вы Авторизованы");
-                    if (Classes.RolvKarte.Role == 1)
-                    {
-                        ret = 1;
-                    }
-                    if (Classes.RolvKarte.Role == 2)
-                    {
-                        ret = 2;
-                    }
-                    if (Classes.RolvKarte.Role == 3)
-                    {
-                        ret = 3;
-                    }
-                    if (Classes.RolvKarte.Role == 4)
-                    {
-                        ret = 4;
-                    }
-                }
-                else
-                {
-                    ret = 0;
-                }
-            }
-            else
-            {
-                ret = 0;
-            }
-            reader.Close();
-            connection.Close();
-            return (ret);
-        }
     }
 }
