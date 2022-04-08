@@ -174,7 +174,7 @@ namespace Commission_map.Pages
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "RegistraciaRoli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = " Регистрация Роли в текущей карте";
             this.ResumeLayout(false);
             this.PerformLayout();
 

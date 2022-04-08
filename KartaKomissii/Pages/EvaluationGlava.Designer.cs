@@ -264,6 +264,7 @@ namespace Commission_map.Pages
             this.MaximumSize = new System.Drawing.Size(660, 360);
             this.MinimumSize = new System.Drawing.Size(649, 352);
             this.Name = "EvaluationGlava";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оценивание главой комиссии";
             this.ResumeLayout(false);
             this.PerformLayout();

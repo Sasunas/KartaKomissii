@@ -32,13 +32,13 @@ namespace Commission_map.Pages
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lastname = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.otchestvo = new System.Windows.Forms.TextBox();
             this.Regist = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
+            this.login = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -76,26 +76,26 @@ namespace Commission_map.Pages
             this.label3.TabIndex = 2;
             this.label3.Text = "Отчество";
             // 
-            // textBox1
+            // lastname
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.lastname.Location = new System.Drawing.Point(72, 35);
+            this.lastname.Name = "lastname";
+            this.lastname.Size = new System.Drawing.Size(100, 20);
+            this.lastname.TabIndex = 4;
             // 
-            // textBox2
+            // name
             // 
-            this.textBox2.Location = new System.Drawing.Point(72, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.name.Location = new System.Drawing.Point(72, 61);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(100, 20);
+            this.name.TabIndex = 5;
             // 
-            // textBox3
+            // otchestvo
             // 
-            this.textBox3.Location = new System.Drawing.Point(72, 89);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.otchestvo.Location = new System.Drawing.Point(72, 89);
+            this.otchestvo.Name = "otchestvo";
+            this.otchestvo.Size = new System.Drawing.Size(100, 20);
+            this.otchestvo.TabIndex = 6;
             // 
             // Regist
             // 
@@ -121,19 +121,19 @@ namespace Commission_map.Pages
             this.Back.UseVisualStyleBackColor = false;
             this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
-            // textBox5
+            // password
             // 
-            this.textBox5.Location = new System.Drawing.Point(72, 140);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 13;
+            this.password.Location = new System.Drawing.Point(72, 140);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(100, 20);
+            this.password.TabIndex = 13;
             // 
-            // textBox6
+            // login
             // 
-            this.textBox6.Location = new System.Drawing.Point(72, 115);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 12;
+            this.login.Location = new System.Drawing.Point(72, 115);
+            this.login.Name = "login";
+            this.login.Size = new System.Drawing.Size(100, 20);
+            this.login.TabIndex = 12;
             // 
             // label5
             // 
@@ -198,22 +198,22 @@ namespace Commission_map.Pages
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.password);
+            this.Controls.Add(this.login);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.Regist);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.otchestvo);
+            this.Controls.Add(this.name);
+            this.Controls.Add(this.lastname);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "RegistraciaSotr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Регистрация";
+            this.Text = "Регистрация Сотрудника";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,13 +224,13 @@ namespace Commission_map.Pages
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox lastname;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox otchestvo;
         private System.Windows.Forms.Button Regist;
         private System.Windows.Forms.Button Back;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.TextBox login;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton radioButton1;

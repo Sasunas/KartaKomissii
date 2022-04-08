@@ -30,8 +30,8 @@ namespace Commission_map.Pages
             int count = Convert.ToInt32(_reader[0].ToString());
             _reader.Close();
             //Наполнение Сотрудников
-            _command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + textBox1.Text + "', '" + textBox2.Text
-                                                                                          + "', '" + textBox3.Text + "')";
+            _command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + lastname.Text + "', '" + name.Text
+                                                                                          + "', '" + otchestvo.Text + "')";
             modules.Command(_command);
             //Рассчёт длины Паролей
             _command = "SELECT COUNT(*) FROM [Пароли]";
@@ -40,7 +40,7 @@ namespace Commission_map.Pages
             count = Convert.ToInt32(_reader[0].ToString());
             _reader.Close();
             // Наполнение Паролей
-            _command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + textBox6.Text + "','" + textBox5.Text + "')";
+            _command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + login.Text + "','" + password.Text + "')";
             modules.Command(_command);
             MessageBox.Show("Сотрудник был успешно зарегистрирован");
         }

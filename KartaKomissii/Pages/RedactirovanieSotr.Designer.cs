@@ -223,7 +223,7 @@ namespace Commission_map.Pages
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "RedactirovanieSotr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Редактирование";
+            this.Text = "Редактирование Сотрудника";
             this.ResumeLayout(false);
             this.PerformLayout();
 

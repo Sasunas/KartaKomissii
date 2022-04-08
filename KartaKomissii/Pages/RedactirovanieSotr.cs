@@ -35,10 +35,10 @@ namespace Commission_map.Pages
 
         private void Redact_Click(object sender, EventArgs e)
         {
-            string _command = "UPDATE FROM [Сотрудник] SET Фамилия = '"+ familia.Text + "', Имя = '" + name.Text + "'," +
+            string _command = "UPDATE [Сотрудник] SET Фамилия = '"+ familia.Text + "', Имя = '" + name.Text + "'," +
                              " Отчество = '" + otchestvo.Text + "' WHERE ID = " + (Sotrud.SelectedIndex + 1) + " ";
             modules.Command(_command);
-            _command = "UPDATE FROM [Пароли] SET Логин = '" + password.Text + "', Пароль = '" + login.Text + "'" +
+            _command = "UPDATE [Пароли] SET Логин = '" + login.Text + "', Пароль = '" + password.Text + "'" +
                       " WHERE ID_Сотрудника = " + (Sotrud.SelectedIndex + 1) + "";
             modules.Command(_command);
         }
@@ -51,8 +51,8 @@ namespace Commission_map.Pages
             familia.Text = _reader[1].ToString();
             name.Text = _reader[2].ToString();
             otchestvo.Text = _reader[3].ToString();
-            password.Text = _reader[5].ToString();
-            login.Text = _reader[6].ToString();
+            login.Text = _reader[5].ToString();
+            password.Text = _reader[6].ToString();
             _reader.Close();
         }
 

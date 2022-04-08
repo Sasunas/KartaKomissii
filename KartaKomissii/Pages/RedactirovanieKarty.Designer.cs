@@ -203,7 +203,7 @@ namespace Commission_map.Pages
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "RedactirovanieKarty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RedactirovanieKarty";
+            this.Text = "Редактирование Карты комиссии";
             this.ResumeLayout(false);
             this.PerformLayout();
 

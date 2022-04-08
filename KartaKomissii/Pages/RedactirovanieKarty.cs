@@ -37,7 +37,7 @@ namespace Commission_map.Pages
             modules.Reader(_command, out _reader);
             while (_reader.Read())
             {
-                status.Items.Add(_reader[0].ToString().Trim());
+                status.Items.Add(_reader[1].ToString().Trim());
             }
             _reader.Close();
         }
@@ -45,7 +45,7 @@ namespace Commission_map.Pages
         private void Redact_Click(object sender, EventArgs e)
         {
             string _command = "UPDATE FROM [Карта комиссии] SET ID_Сотрудник = '" + textBox2.Text + "', Дата начала = '" + dateTimePicker1.Value + "'" +
-                             ", Дата конца = '" + dateTimePicker2.Value + "', Статус = '" + status.SelectedIndex.ToString() + "'" +
+                             ", Дата конца = '" + dateTimePicker2.Value + "', Статус = '" + (status.SelectedIndex + 1) + "'" +
                              " WHERE ID = " + (Karta.SelectedIndex + 1) + " ";
             modules.Command(_command);
         }
@@ -59,7 +59,7 @@ namespace Commission_map.Pages
             textBox2.Text = _reader[1].ToString();
             dateTimePicker1.Value = Convert.ToDateTime(_reader[2].ToString());
             dateTimePicker2.Value = Convert.ToDateTime(_reader[3].ToString());
-            status.SelectedIndex = Convert.ToInt32(_reader[5].ToString()) + 1;
+            status.SelectedIndex = Convert.ToInt32(_reader[5].ToString()) - 1;
             _reader.Close();
         }
 

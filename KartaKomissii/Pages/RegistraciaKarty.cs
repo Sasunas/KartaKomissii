@@ -44,9 +44,13 @@ namespace Commission_map.Pages
                 int count = Convert.ToInt32(_reader[0].ToString());
                 _reader.Close();
                 //Наполнение Карта комиссии
-                _command = "INSERT INTO [Карта комиссии] (ID,ID_Сотрудника, Дата начала, Дата конца) VALUES(" + (count + 1) + ",'" + comboBox1.Text + "','" + dateTimePicker1.Value
-                                                                                              + "','" + dateTimePicker2.Value + "')";
+                _command = "INSERT INTO [Карта комиссии] (ID, ID_Сотрудника, [Дата начала], [Дата конца], Ссылка, ID_Статуса) VALUES(" + (count + 1)
+                    + ",'" + (comboBox1.SelectedIndex + 1) + "','" + dateTimePicker1.Value + "','" + dateTimePicker2.Value + "','',1)";
                 modules.Command(_command);
+                _command = "INSERT INTO [Роль в текущей карте] (ID_Карты_комиссии, ID_Сотрудника, ID_Роли) VALUES(" + (count + 1)
+                    + ",'" + (comboBox1.SelectedIndex + 1) + "',1)";
+                modules.Command(_command);
+                MessageBox.Show("Карта комиссии была успешна создана");
             }
             catch(Exception exp)
             {

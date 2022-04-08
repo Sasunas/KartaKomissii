@@ -94,7 +94,9 @@ namespace Commission_map.Pages
                         {
                             MessageBox.Show("Карту комисси удалять не стоит.");
                             viewTableNow = "Карта комиссии";
-                            string _command = "DELETE FROM Оценка по требованию WHERE ID_Карта_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                            string _command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                            modules.Command(_command);
+                            _command = "DELETE FROM [Роль в текущей карте] WHERE ID_Карты_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                             modules.Command(_command);
                             _command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                             modules.Command(_command);

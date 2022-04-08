@@ -172,7 +172,7 @@ namespace Commission_map.Pages
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "RegistraciaKarty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RegistraciaKarty";
+            this.Text = "Регистрация Карты комиссии";
             this.ResumeLayout(false);
             this.PerformLayout();
 
