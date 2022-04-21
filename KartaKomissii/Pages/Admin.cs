@@ -64,17 +64,22 @@ namespace Commission_map.Pages
                     modules.Command(_command);
                     _command = "DELETE FROM [Роль в текущей карте] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                     modules.Command(_command);
+                    _command = "UPDATE [Роль в текущей карте] SET ID = ID - 1 WHERE ID > '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Command(_command);
                     _command = "SELECT * FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                     modules.Reader(_command, out SqlDataReader _reader);
-                    while (_reader.Read())
-                    {
-                        _command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + _reader[0].ToString() + "'";
-                        modules.Command(_command);
-                    }
+                    _command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + id + "'";
+                    modules.Command(_command);
+                    _command = "UPDATE [Оценка по требованию] SET ID = ID - 1 WHERE ID_Карта_комиссии > '" + id + "'";
+                    modules.Command(_command);
                     _reader.Close();
                     _command = "DELETE FROM [Карта комиссии] WHERE ID_Сотрудника = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                     modules.Command(_command);
+                    _command = "UPDATE [Карта комиссии] SET ID_Карта_комиссии = ID_Карта_комиссии - 1 WHERE ID_Карта_комиссии > '" + id + "'";
+                    modules.Command(_command);
                     _command = "DELETE FROM [" + viewTableNow + "] WHERE ID = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
+                    modules.Command(_command);
+                    _command = "UPDATE [" + viewTableNow + "] SET ID = ID - 1 WHERE ID > '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                     modules.Command(_command);
                     modules.Close();
                 }
@@ -92,7 +97,6 @@ namespace Commission_map.Pages
                         // Удаление карты комиссии со связанными данными в таблице Оценка по требованию
                         if (karty.Checked == true)
                         {
-                            MessageBox.Show("Карту комисси удалять не стоит.");
                             viewTableNow = "Карта комиссии";
                             string _command = "DELETE FROM [Оценка по требованию] WHERE ID_Карта_комиссии = '" + (Convert.ToInt32(dataGridView1.SelectedRows[0].Index.ToString()) + 1) + "'";
                             modules.Command(_command);
@@ -138,8 +142,8 @@ namespace Commission_map.Pages
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Роль в текущей карте'";
             modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
-            dataGridView1.Size = new Size(345, 135);
-            Size = new Size(500, 240);
+            dataGridView1.Size = new Size(460, 135);
+            Size = new Size(615, 240);
             modules.Dispose();
         }
 
@@ -149,8 +153,8 @@ namespace Commission_map.Pages
             string lastIdCheck = "SELECT COUNT(*)FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
             string getTableName = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Карта комиссии'";
             modules.AddToGrid(command, lastIdCheck, getTableName, dataGridView1);
-            dataGridView1.Size = new Size(650,135);
-            Size = new Size(805, 240);
+            dataGridView1.Size = new Size(645,135);
+            Size = new Size(800, 240);
             modules.Dispose();
         }
 

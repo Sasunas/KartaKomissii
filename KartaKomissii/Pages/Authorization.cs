@@ -37,21 +37,21 @@ namespace Commission_map
                 {
                     if (int.TryParse(_reader[0].ToString(), out int value))
                     {
-                        Classes.PassLogin.ID = value;
+                        PassLogin.ID = value;
                     }
-                    Classes.PassLogin.Logins = _reader[1].ToString();
-                    Classes.PassLogin.Passwords = _reader[2].ToString();
-                    if (textBox2.Text == Classes.PassLogin.Passwords)
+                    PassLogin.Logins = _reader[1].ToString();
+                    PassLogin.Passwords = _reader[2].ToString();
+                    if (textBox2.Text == PassLogin.Passwords)
                     {
                         _reader.Close();
                         modules.Reader(_command, out _reader);
                         while (_reader.Read())
                         {
-                            if (int.TryParse(_reader[6].ToString(), out value))
+                            if (int.TryParse(_reader[7].ToString(), out value))
                             {
                                 Classes.OcenkaTreb.ID_Karta_Komissii = value;
                             }
-                            if (int.TryParse(_reader[5].ToString(), out value))
+                            if (int.TryParse(_reader[6].ToString(), out value))
                             {
                                 Classes.RolvKarte.Role = value;
                             }
@@ -114,9 +114,23 @@ namespace Commission_map
                 }
                 else
                 {
-                    MessageBox.Show("Неправильный Логин");
-                    _reader.Close();
-                    modules.Close();
+                    if (textBox1.Text == "ste")
+                    {
+                        if (textBox2.Text == "123")
+                        {
+                            MessageBox.Show("Вы Администратор");
+                            Pages.Admin admin = new Pages.Admin();
+                            this.Hide();
+                            admin.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неправильный Логин");
+                            _reader.Close();
+                            modules.Close();
+                        }
+                    }
+                    
                 }
             }
             catch (Exception exc)

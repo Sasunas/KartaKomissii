@@ -47,7 +47,13 @@ namespace Commission_map.Pages
                 _command = "INSERT INTO [Карта комиссии] (ID, ID_Сотрудника, [Дата начала], [Дата конца], Ссылка, ID_Статуса) VALUES(" + (count + 1)
                     + ",'" + (comboBox1.SelectedIndex + 1) + "','" + dateTimePicker1.Value + "','" + dateTimePicker2.Value + "','',1)";
                 modules.Command(_command);
-                _command = "INSERT INTO [Роль в текущей карте] (ID_Карты_комиссии, ID_Сотрудника, ID_Роли) VALUES(" + (count + 1)
+                //Наполнение Роль в текущей карте
+                _command = "SELECT COUNT(*) FROM [Роль в текущей карте]";
+                modules.Reader(_command, out _reader);
+                _reader.Read();
+                int id = Convert.ToInt32(_reader[0].ToString());
+                _reader.Close();
+                _command = "INSERT INTO [Роль в текущей карте] (ID,ID_Карты_комиссии, ID_Сотрудника, ID_Роли) VALUES(" + id + "," + (count + 1)
                     + ",'" + (comboBox1.SelectedIndex + 1) + "',1)";
                 modules.Command(_command);
                 MessageBox.Show("Карта комиссии была успешна создана");

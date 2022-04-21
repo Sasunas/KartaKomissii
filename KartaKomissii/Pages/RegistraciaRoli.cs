@@ -63,10 +63,17 @@ namespace Commission_map.Pages
                 else
                 {
                     //Наполнение Роли в текущей карте
-                    _command = "INSERT INTO [Роль в текущей карте] (ID_Карты_комиссии,ID_Сотрудника, ID_Роли) VALUES('" + (Convert.ToInt32(comboBox3.SelectedIndex.ToString()) + 1) + "'" +
+                    _command = "SELECT COUNT(*) FROM [Роль в текущей карте]";
+                    modules.Reader(_command, out _reader);
+                    _reader.Read();
+                    int id = Convert.ToInt32(_reader[0].ToString());
+                    _reader.Close();
+                    _command = "INSERT INTO [Роль в текущей карте] (ID,ID_Карты_комиссии,ID_Сотрудника, ID_Роли) VALUES("+ id +
+                                                                            ", '" + (Convert.ToInt32(comboBox3.SelectedIndex.ToString()) + 1) + "'" +
                                                                             ", '" + (Convert.ToInt32(comboBox2.SelectedIndex.ToString()) + 1) + "'" +
                                                                             ", '" + (Convert.ToInt32(comboBox1.SelectedIndex.ToString()) + 1) + "')";
                     modules.Command(_command);
+                    MessageBox.Show("Роль в текущей карте была успешно добавлена");
                 }
                 _reader.Close();
             }

@@ -134,7 +134,7 @@ namespace Commission_map.Pages
                     modules.Reader(_command, out _reader);
                     while (_reader.Read())
                     {
-                        listView1.Items.Add("ФИО = " + _reader[25].ToString().Trim() + " " + _reader[26].ToString().Trim() + " " + _reader[27].ToString().Trim());
+                        listView1.Items.Add("ФИО = " + _reader[26].ToString().Trim() + " " + _reader[27].ToString().Trim() + " " + _reader[28].ToString().Trim());
                         listView1.Items.Add("Роль = " + _reader[23].ToString().Trim());
                         listView1.Items.Add("Блок требований = " + _reader[16].ToString().Trim());
                         listView1.Items.Add("Архетип = " + _reader[18].ToString().Trim());
@@ -200,9 +200,9 @@ namespace Commission_map.Pages
                         int _trebovania = Convert.ToInt32(_reader[0]);
                         _reader.Close();
                         //Выставление оценки - есть проблема - нужно добавить комментарий и ID_Сотрудника который выставляет оценку
-                        _command = "INSERT INTO [Оценка по требованию] (ID, ID_Требования, ID_Оценка_сотрудника, ID_Сотрудника, Оценка, Дата) VALUES ("
+                        _command = "INSERT INTO [Оценка по требованию] (ID, ID_Требования, ID_Карта_комиссии, ID_Сотрудника, Оценка, Дата, Комментарий) VALUES ("
                             + (count + 1) + ", " + _trebovania + ", " + Classes.OcenkaTreb.ID_Karta_Komissii
-                            + ", " + Classes.PassLogin.ID + ", '" + ocenkaBox.Text + "', '" + DateTime.Today + "')";
+                            + ", " + Classes.PassLogin.ID + ", '" + ocenkaBox.Text + "', '" + DateTime.Today + "', '" + commentBox.Text + "')";
                         modules.Command(_command);
                         MessageBox.Show("Оценка была успешно выставлена");
                         Classes.OcenkaTreb.ID_OcenkaTreb = count;
@@ -225,6 +225,7 @@ namespace Commission_map.Pages
             {
                 MessageBox.Show(exc.Message);
             }
+            DateTimePicker1_ValueChanged(sender, e);
         }
 
         private void Comment_Click(object sender, EventArgs e)
