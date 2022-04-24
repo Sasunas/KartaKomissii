@@ -21,6 +21,7 @@ namespace Commission_map.Pages
             InitializeComponent();
         }
 
+
         private void Regist_Click(object sender, EventArgs e)
         {
             int value;

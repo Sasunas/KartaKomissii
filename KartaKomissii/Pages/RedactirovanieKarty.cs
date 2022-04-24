@@ -23,6 +23,7 @@ namespace Commission_map.Pages
             Karty_Load();
         }
 
+
         public void Karty_Load()
         {
             // 

@@ -22,6 +22,7 @@ namespace Commission_map.Pages
             Sotrud_Load();
         }
 
+
         public void Sotrud_Load()
         {
             string _command = "SELECT * FROM [Сотрудник]";

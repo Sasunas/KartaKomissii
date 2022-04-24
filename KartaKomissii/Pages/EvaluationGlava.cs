@@ -27,6 +27,7 @@ namespace Commission_map.Pages
             Ocenka_Load();
         }
 
+
         public void Ocenka_Load()
         {
             try

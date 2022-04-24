@@ -18,6 +18,7 @@ namespace Commission_map
         readonly string Sql = Classes.PassLogin.connectionString[0].ToString();
         private static IntPtr handle;
         Modules modules = new Modules(handle);
+
         public Autorizacia()
         {
             InitializeComponent();

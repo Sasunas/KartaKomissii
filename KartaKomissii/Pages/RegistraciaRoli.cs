@@ -22,6 +22,7 @@ namespace Commission_map.Pages
             Load_Role();
         }
 
+
         public void Load_Role()
         {
             string _command = "SELECT * FROM [Роли]";

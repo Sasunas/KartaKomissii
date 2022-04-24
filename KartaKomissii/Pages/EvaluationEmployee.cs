@@ -28,6 +28,7 @@ namespace Commission_map.Pages
             toolTip1.SetToolTip(this.commentBox, "Тут можно комментировать");
         }
 
+
         public void Ocenka_Load()
         {
             try

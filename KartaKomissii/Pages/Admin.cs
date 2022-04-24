@@ -17,6 +17,7 @@ namespace Commission_map.Pages
     {
        private static IntPtr handle;
         Modules modules = new Modules(handle);
+
         public Admin()
         {
             InitializeComponent();
