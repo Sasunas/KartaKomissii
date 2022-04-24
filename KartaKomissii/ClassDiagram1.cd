@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="moduls.classes.RolvKarte" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>classes\RolvKarte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="moduls.Sotrydnik">
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAQAAAAQAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>classes\Sotrydnik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="moduls.Paroli">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>classes\Paroli.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="moduls.RovvTekysheyKarte">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>classes\RovvTekysheyKarte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="moduls.Roli">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Roli.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
