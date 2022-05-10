@@ -78,7 +78,7 @@ namespace Commission_map.Pages
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(177, 23);
             this.button3.TabIndex = 4;
-            this.button3.Text = "Создать";
+            this.button3.Text = "Создат";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
