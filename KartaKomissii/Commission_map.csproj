@@ -67,6 +67,12 @@
     <Compile Include="Pages\Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Constructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Constructor.Designer.cs">
+      <DependentUpon>Constructor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EvaluationMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Constructor.resx">
+      <DependentUpon>Constructor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\EvaluationMember.resx">
       <DependentUpon>EvaluationMember.cs</DependentUpon>

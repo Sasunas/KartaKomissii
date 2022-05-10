@@ -39,6 +39,7 @@ namespace Commission_map.Pages
             this.roli = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.Konstr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,12 +162,25 @@ namespace Commission_map.Pages
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // Konstr
+            // 
+            this.Konstr.BackColor = System.Drawing.Color.White;
+            this.Konstr.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Konstr.Location = new System.Drawing.Point(13, 178);
+            this.Konstr.Name = "Konstr";
+            this.Konstr.Size = new System.Drawing.Size(102, 23);
+            this.Konstr.TabIndex = 11;
+            this.Konstr.Text = "Конструктор";
+            this.Konstr.UseVisualStyleBackColor = false;
+            this.Konstr.Click += new System.EventHandler(this.Konstr_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
             this.ClientSize = new System.Drawing.Size(728, 227);
+            this.Controls.Add(this.Konstr);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.roli);
@@ -201,5 +215,6 @@ namespace Commission_map.Pages
         private System.Windows.Forms.RadioButton roli;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Konstr;
     }
 }

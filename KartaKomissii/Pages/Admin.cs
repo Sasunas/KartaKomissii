@@ -168,5 +168,12 @@ namespace Commission_map.Pages
                 MessageBox.Show(sb.ToString(), "Selected Rows");
             }
         }
+
+        private void Konstr_Click(object sender, EventArgs e)
+        {
+            Constructor frm = new Constructor();
+            this.Close();
+            frm.Show();
+        }
     }
 }
