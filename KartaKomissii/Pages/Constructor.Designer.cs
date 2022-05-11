@@ -36,12 +36,14 @@ namespace Commission_map.Pages
             this.Create = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Name = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(15, 25);
+            this.listBox1.Location = new System.Drawing.Point(15, 72);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(174, 147);
             this.listBox1.TabIndex = 0;
@@ -49,34 +51,36 @@ namespace Commission_map.Pages
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(276, 25);
+            this.listBox2.Location = new System.Drawing.Point(276, 72);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(177, 147);
             this.listBox2.TabIndex = 1;
             // 
             // Inside
             // 
-            this.Inside.Location = new System.Drawing.Point(195, 60);
+            this.Inside.Location = new System.Drawing.Point(195, 107);
             this.Inside.Name = "Inside";
             this.Inside.Size = new System.Drawing.Size(75, 23);
             this.Inside.TabIndex = 2;
             this.Inside.Text = "→";
             this.Inside.UseVisualStyleBackColor = true;
+            this.Inside.Click += new System.EventHandler(this.Inside_Click);
             // 
             // Outside
             // 
-            this.Outside.Location = new System.Drawing.Point(195, 104);
+            this.Outside.Location = new System.Drawing.Point(195, 151);
             this.Outside.Name = "Outside";
             this.Outside.Size = new System.Drawing.Size(75, 23);
             this.Outside.TabIndex = 3;
             this.Outside.Text = "←";
             this.Outside.UseVisualStyleBackColor = true;
+            this.Outside.Click += new System.EventHandler(this.Outside_Click);
             // 
             // Create
             // 
             this.Create.BackColor = System.Drawing.Color.White;
             this.Create.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Create.Location = new System.Drawing.Point(276, 178);
+            this.Create.Location = new System.Drawing.Point(121, 25);
             this.Create.Name = "Create";
             this.Create.Size = new System.Drawing.Size(177, 23);
             this.Create.TabIndex = 4;
@@ -88,7 +92,7 @@ namespace Commission_map.Pages
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 5;
@@ -98,18 +102,37 @@ namespace Commission_map.Pages
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(273, 9);
+            this.label2.Location = new System.Drawing.Point(273, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(196, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Список создоваемой карты комисии";
+            this.label2.Text = "Список создаваемой карты комисии";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Название создаваемого архетипа";
+            // 
+            // Name
+            // 
+            this.Name.Location = new System.Drawing.Point(15, 25);
+            this.Name.Name = "Name";
+            this.Name.Size = new System.Drawing.Size(100, 20);
+            this.Name.TabIndex = 8;
             // 
             // Constructor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(586, 276);
+            this.ClientSize = new System.Drawing.Size(511, 301);
+            this.Controls.Add(this.Name);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Create);
@@ -134,5 +157,7 @@ namespace Commission_map.Pages
         private System.Windows.Forms.Button Create;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Name;
     }
 }

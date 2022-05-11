@@ -36,10 +36,10 @@ namespace Commission_map.Pages
 
         private void Redact_Click(object sender, EventArgs e)
         {
-            string _command = "UPDATE [Сотрудник] SET Фамилия = '"+ familia.Text + "', Имя = '" + name.Text + "'," +
-                             " Отчество = '" + otchestvo.Text + "' WHERE ID = " + (Sotrud.SelectedIndex + 1) + " ";
+            string _command = "UPDATE [Сотрудник] SET [Фамилия] = '"+ familia.Text + "', [Имя] = '" + name.Text + "'," +
+                             " [Отчество] = '" + otchestvo.Text + "' WHERE ID = " + (Sotrud.SelectedIndex + 1) + " ";
             modules.Command(_command);
-            _command = "UPDATE [Пароли] SET Логин = '" + login.Text + "', Пароль = '" + password.Text + "'" +
+            _command = "UPDATE [Пароли] SET [Логин] = '" + login.Text + "', [Пароль] = '" + password.Text + "'" +
                       " WHERE ID_Сотрудника = " + (Sotrud.SelectedIndex + 1) + "";
             modules.Command(_command);
         }

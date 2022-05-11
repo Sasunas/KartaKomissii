@@ -28,18 +28,13 @@ namespace Commission_map
         private void Avtorizacia_Click(object sender, EventArgs e)
         {
             
-            //try
-            //{
+            try
+            {
                 string _command = "SELECT * FROM Пароли a LEFT JOIN[Роль в текущей карте] b ON a.ID_Сотрудника = b.ID_Сотрудника" +
                     " LEFT JOIN[Карта комиссии] c ON b.ID_Карты_комиссии = c.ID " +
                     " WHERE a.Логин = '" + textBox1.Text + "' and c.ID_Статуса = 1";
-                SqlConnection con = new SqlConnection(Sql);
-                con.Open();
-                SqlCommand command = new SqlCommand(_command, con);
-                SqlDataReader _reader = command.ExecuteReader();
-                //_reader.Close();
-                //modules.Reader1(_command);
-                //
+                modules.Reader(_command, out SqlDataReader _reader);
+            //
                 _reader.Read();
                 if (_reader.HasRows == true)
                 {
@@ -140,11 +135,11 @@ namespace Commission_map
                     }
                     
                 }
-            //}
-            //catch (Exception exc)
-            //{
-            //    MessageBox.Show(exc.Message);
-            //}
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
         private void Exit_Click(object sender, EventArgs e)
         {

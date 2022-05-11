@@ -45,8 +45,8 @@ namespace Commission_map.Pages
 
         private void Redact_Click(object sender, EventArgs e)
         {
-            string _command = "UPDATE FROM [Карта комиссии] SET ID_Сотрудник = '" + textBox2.Text + "', Дата начала = '" + dateTimePicker1.Value + "'" +
-                             ", Дата конца = '" + dateTimePicker2.Value + "', Статус = '" + (status.SelectedIndex + 1) + "'" +
+            string _command = "UPDATE [Карта комиссии] SET [ID_Сотрудника] = '" + textBox2.Text + "', [Дата начала] = '" + dateTimePicker1.Value + "'" +
+                             ", [Дата конца] = '" + dateTimePicker2.Value + "', [ID_Статуса] = '" + (status.SelectedIndex + 1) + "'" +
                              " WHERE ID = " + (Karta.SelectedIndex + 1) + " ";
             modules.Command(_command);
         }

@@ -57,27 +57,28 @@ namespace Commission_map.Classes
 
         public void Command(string _command)
         {
-            using (SqlConnection _connection = new SqlConnection(Sql))
-            {
-                _connection.Open();
-                using (SqlCommand command = new SqlCommand(_command, _connection))
-                {
-                    command.ExecuteNonQuery();
-                    _connection.Close();
-                }
-            }
+            SqlConnection _connection = new SqlConnection(Sql);
+            _connection.Open();
+            SqlCommand command = new SqlCommand(_command, _connection);
+            command.ExecuteNonQuery();
+            _connection.Close();
+            //using (SqlConnection _connection = new SqlConnection(Sql))
+            //{
+            //    _connection.Open();
+            //    using (SqlCommand command = new SqlCommand(_command, _connection))
+            //    {
+            //        command.ExecuteNonQuery();
+            //        _connection.Close();
+            //    }
+            //}
         }
 
         public void Reader(string _command, out SqlDataReader _reader)
         {
-            using (SqlConnection _connection = new SqlConnection(Sql))
-            {
-                _connection.Open();
-                using (SqlCommand command = new SqlCommand(_command, _connection))
-                {
-                    _reader = command.ExecuteReader();
-                }
-            }
+            SqlConnection _connection = new SqlConnection(Sql);
+            _connection.Open();
+            SqlCommand command = new SqlCommand(_command, _connection);
+            _reader = command.ExecuteReader();
         }
 
         public SqlDataReader Reader1(string _command)
