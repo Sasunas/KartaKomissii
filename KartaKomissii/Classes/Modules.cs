@@ -79,6 +79,21 @@ namespace Commission_map.Classes
                 }
             }
         }
+
+        public SqlDataReader Reader1(string _command)
+        {
+            SqlDataReader _reader;
+            using (SqlConnection _connection = new SqlConnection(Sql))
+            {
+                _connection.Open();
+                using (SqlCommand command = new SqlCommand(_command, _connection))
+                {
+                    _reader = command.ExecuteReader();
+                    return _reader;
+                }
+            }
+        }
+
         public void Close()
         {
             using (SqlConnection _connection = new SqlConnection(Sql))

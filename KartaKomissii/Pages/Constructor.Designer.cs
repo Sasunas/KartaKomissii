@@ -31,9 +31,9 @@ namespace Commission_map.Pages
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Inside = new System.Windows.Forms.Button();
+            this.Outside = new System.Windows.Forms.Button();
+            this.Create = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -54,37 +54,40 @@ namespace Commission_map.Pages
             this.listBox2.Size = new System.Drawing.Size(177, 147);
             this.listBox2.TabIndex = 1;
             // 
-            // button1
+            // Inside
             // 
-            this.button1.Location = new System.Drawing.Point(195, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "→";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Inside.Location = new System.Drawing.Point(195, 60);
+            this.Inside.Name = "Inside";
+            this.Inside.Size = new System.Drawing.Size(75, 23);
+            this.Inside.TabIndex = 2;
+            this.Inside.Text = "→";
+            this.Inside.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Outside
             // 
-            this.button2.Location = new System.Drawing.Point(195, 104);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "←";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Outside.Location = new System.Drawing.Point(195, 104);
+            this.Outside.Name = "Outside";
+            this.Outside.Size = new System.Drawing.Size(75, 23);
+            this.Outside.TabIndex = 3;
+            this.Outside.Text = "←";
+            this.Outside.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Create
             // 
-            this.button3.Location = new System.Drawing.Point(276, 178);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(177, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Создат";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Create.BackColor = System.Drawing.Color.White;
+            this.Create.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Create.Location = new System.Drawing.Point(276, 178);
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(177, 23);
+            this.Create.TabIndex = 4;
+            this.Create.Text = "Создать";
+            this.Create.UseVisualStyleBackColor = false;
+            this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
@@ -94,6 +97,7 @@ namespace Commission_map.Pages
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(273, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(196, 13);
@@ -108,9 +112,9 @@ namespace Commission_map.Pages
             this.ClientSize = new System.Drawing.Size(586, 276);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Create);
+            this.Controls.Add(this.Outside);
+            this.Controls.Add(this.Inside);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -125,9 +129,9 @@ namespace Commission_map.Pages
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Inside;
+        private System.Windows.Forms.Button Outside;
+        private System.Windows.Forms.Button Create;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
