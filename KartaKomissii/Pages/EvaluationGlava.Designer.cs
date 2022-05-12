@@ -236,6 +236,7 @@ namespace Commission_map.Pages
             this.Archetype.Name = "Archetype";
             this.Archetype.Size = new System.Drawing.Size(115, 21);
             this.Archetype.TabIndex = 70;
+            this.Archetype.SelectedIndexChanged += new System.EventHandler(this.Archetype_SelectedIndexChanged);
             // 
             // EvaluationGlava
             // 

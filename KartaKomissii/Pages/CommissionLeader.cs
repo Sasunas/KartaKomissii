@@ -13,12 +13,12 @@ using Commission_map.Classes;
 namespace Commission_map.Pages
 {
 
-    public partial class Admin : Form
+    public partial class CommissionLeader : Form
     {
        private static IntPtr handle;
         Modules modules = new Modules(handle);
 
-        public Admin()
+        public CommissionLeader()
         {
             InitializeComponent();
             Admin_Load();
@@ -174,6 +174,18 @@ namespace Commission_map.Pages
             Constructor frm = new Constructor();
             this.Close();
             frm.Show();
+        }
+
+        private void Commiss_Click(object sender, EventArgs e)
+        {
+            EvaluationGlava frm = new EvaluationGlava();
+            this.Close();
+            frm.Show();
+        }
+
+        private void notifications_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

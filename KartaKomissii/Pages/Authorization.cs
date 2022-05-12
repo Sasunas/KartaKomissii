@@ -93,8 +93,8 @@ namespace Commission_map
                                     {
                                         if (RolvKarte.Role == 4)
                                         {
-                                            MessageBox.Show("Вы Администратор");
-                                            Pages.Admin admin = new Pages.Admin();
+                                            MessageBox.Show("Вы Руководитель комисии");
+                                            Pages.CommissionLeader admin = new Pages.CommissionLeader();
                                             this.Hide();
                                             admin.Show();
                                             break;
@@ -121,8 +121,9 @@ namespace Commission_map
                     {
                         if (textBox2.Text == "123")
                         {
+                            PassLogin.ID = 4;
                             MessageBox.Show("Вы Администратор");
-                            Pages.Admin admin = new Pages.Admin();
+                            Pages.CommissionLeader admin = new Pages.CommissionLeader();
                             this.Hide();
                             admin.Show();
                         }

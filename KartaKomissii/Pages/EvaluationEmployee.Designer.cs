@@ -47,6 +47,7 @@ namespace Commission_map.Pages
             this.Deskription = new System.Windows.Forms.TextBox();
             this.ocenkaBox = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Block
@@ -115,7 +116,7 @@ namespace Commission_map.Pages
             // 
             // commentBox
             // 
-            this.commentBox.Location = new System.Drawing.Point(358, 137);
+            this.commentBox.Location = new System.Drawing.Point(358, 128);
             this.commentBox.Name = "commentBox";
             this.commentBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.commentBox.Size = new System.Drawing.Size(166, 87);
@@ -224,12 +225,23 @@ namespace Commission_map.Pages
             this.ocenkaBox.Size = new System.Drawing.Size(100, 20);
             this.ocenkaBox.TabIndex = 49;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(355, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "Комментарий";
+            // 
             // EvaluationEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
             this.ClientSize = new System.Drawing.Size(538, 327);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.ocenkaBox);
             this.Controls.Add(this.Deskription);
             this.Controls.Add(this.radioButton3);
@@ -276,5 +288,6 @@ namespace Commission_map.Pages
         private System.Windows.Forms.TextBox Deskription;
         private System.Windows.Forms.TextBox ocenkaBox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label4;
     }
 }

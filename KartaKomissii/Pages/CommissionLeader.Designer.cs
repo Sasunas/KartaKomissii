@@ -1,7 +1,7 @@
 ﻿
 namespace Commission_map.Pages
 {
-    partial class Admin
+    partial class CommissionLeader
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,8 @@ namespace Commission_map.Pages
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.Konstr = new System.Windows.Forms.Button();
+            this.Commiss = new System.Windows.Forms.Button();
+            this.notifications = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@ namespace Commission_map.Pages
             // 
             this.Exit.BackColor = System.Drawing.Color.White;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Exit.Location = new System.Drawing.Point(12, 126);
+            this.Exit.Location = new System.Drawing.Point(12, 155);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(103, 21);
             this.Exit.TabIndex = 0;
@@ -59,7 +61,7 @@ namespace Commission_map.Pages
             // 
             this.Back.BackColor = System.Drawing.Color.White;
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Location = new System.Drawing.Point(12, 99);
+            this.Back.Location = new System.Drawing.Point(12, 128);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(103, 21);
             this.Back.TabIndex = 2;
@@ -106,7 +108,7 @@ namespace Commission_map.Pages
             // sotr
             // 
             this.sotr.AutoSize = true;
-            this.sotr.Location = new System.Drawing.Point(121, 15);
+            this.sotr.Location = new System.Drawing.Point(409, 15);
             this.sotr.MaximumSize = new System.Drawing.Size(0, 23);
             this.sotr.Name = "sotr";
             this.sotr.Size = new System.Drawing.Size(84, 17);
@@ -119,7 +121,7 @@ namespace Commission_map.Pages
             // karty
             // 
             this.karty.AutoSize = true;
-            this.karty.Location = new System.Drawing.Point(308, 15);
+            this.karty.Location = new System.Drawing.Point(596, 15);
             this.karty.MaximumSize = new System.Drawing.Size(0, 23);
             this.karty.Name = "karty";
             this.karty.Size = new System.Drawing.Size(108, 17);
@@ -132,7 +134,7 @@ namespace Commission_map.Pages
             // roli
             // 
             this.roli.AutoSize = true;
-            this.roli.Location = new System.Drawing.Point(211, 15);
+            this.roli.Location = new System.Drawing.Point(499, 15);
             this.roli.MaximumSize = new System.Drawing.Size(0, 23);
             this.roli.Name = "roli";
             this.roli.Size = new System.Drawing.Size(91, 17);
@@ -154,9 +156,9 @@ namespace Commission_map.Pages
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(239, 198);
+            this.button1.Location = new System.Drawing.Point(211, 182);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(91, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -166,7 +168,7 @@ namespace Commission_map.Pages
             // 
             this.Konstr.BackColor = System.Drawing.Color.White;
             this.Konstr.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Konstr.Location = new System.Drawing.Point(13, 178);
+            this.Konstr.Location = new System.Drawing.Point(12, 99);
             this.Konstr.Name = "Konstr";
             this.Konstr.Size = new System.Drawing.Size(102, 23);
             this.Konstr.TabIndex = 11;
@@ -174,12 +176,38 @@ namespace Commission_map.Pages
             this.Konstr.UseVisualStyleBackColor = false;
             this.Konstr.Click += new System.EventHandler(this.Konstr_Click);
             // 
-            // Admin
+            // Commiss
+            // 
+            this.Commiss.BackColor = System.Drawing.Color.White;
+            this.Commiss.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Commiss.Location = new System.Drawing.Point(121, 12);
+            this.Commiss.Name = "Commiss";
+            this.Commiss.Size = new System.Drawing.Size(126, 23);
+            this.Commiss.TabIndex = 12;
+            this.Commiss.Text = "Провести комиссию";
+            this.Commiss.UseVisualStyleBackColor = false;
+            this.Commiss.Click += new System.EventHandler(this.Commiss_Click);
+            // 
+            // notifications
+            // 
+            this.notifications.BackColor = System.Drawing.Color.White;
+            this.notifications.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.notifications.Location = new System.Drawing.Point(253, 12);
+            this.notifications.Name = "notifications";
+            this.notifications.Size = new System.Drawing.Size(150, 23);
+            this.notifications.TabIndex = 13;
+            this.notifications.Text = "Проверить уведомления";
+            this.notifications.UseVisualStyleBackColor = false;
+            this.notifications.Click += new System.EventHandler(this.notifications_Click);
+            // 
+            // CommissionLeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(728, 227);
+            this.ClientSize = new System.Drawing.Size(728, 214);
+            this.Controls.Add(this.notifications);
+            this.Controls.Add(this.Commiss);
             this.Controls.Add(this.Konstr);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -194,7 +222,7 @@ namespace Commission_map.Pages
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximumSize = new System.Drawing.Size(805, 370);
             this.MinimumSize = new System.Drawing.Size(300, 240);
-            this.Name = "Admin";
+            this.Name = "CommissionLeader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Панель администратора";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -216,5 +244,7 @@ namespace Commission_map.Pages
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Konstr;
+        private System.Windows.Forms.Button Commiss;
+        private System.Windows.Forms.Button notifications;
     }
 }

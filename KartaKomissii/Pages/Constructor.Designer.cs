@@ -37,13 +37,14 @@ namespace Commission_map.Pages
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Name = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.Back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(15, 72);
+            this.listBox1.Location = new System.Drawing.Point(12, 72);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(174, 147);
             this.listBox1.TabIndex = 0;
@@ -92,7 +93,7 @@ namespace Commission_map.Pages
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(12, 56);
+            this.label1.Location = new System.Drawing.Point(9, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 5;
@@ -118,20 +119,33 @@ namespace Commission_map.Pages
             this.label3.TabIndex = 7;
             this.label3.Text = "Название создаваемого архетипа";
             // 
-            // Name
+            // name
             // 
-            this.Name.Location = new System.Drawing.Point(15, 25);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(100, 20);
-            this.Name.TabIndex = 8;
+            this.name.Location = new System.Drawing.Point(15, 25);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(100, 20);
+            this.name.TabIndex = 8;
+            // 
+            // Back
+            // 
+            this.Back.BackColor = System.Drawing.Color.White;
+            this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Back.Location = new System.Drawing.Point(12, 225);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(75, 23);
+            this.Back.TabIndex = 33;
+            this.Back.Text = "Назад";
+            this.Back.UseVisualStyleBackColor = false;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // Constructor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(511, 301);
-            this.Controls.Add(this.Name);
+            this.ClientSize = new System.Drawing.Size(481, 259);
+            this.Controls.Add(this.Back);
+            this.Controls.Add(this.name);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -158,6 +172,7 @@ namespace Commission_map.Pages
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox Name;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.Button Back;
     }
 }

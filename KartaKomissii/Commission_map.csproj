@@ -55,11 +55,11 @@
     <Compile Include="Classes\Modules.cs" />
     <Compile Include="Classes\PassLogin.cs" />
     <Compile Include="Classes\RolvKarte.cs" />
-    <Compile Include="Pages\Admin.cs">
+    <Compile Include="Pages\CommissionLeader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
+    <Compile Include="Pages\CommissionLeader.Designer.cs">
+      <DependentUpon>CommissionLeader.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Authorization.cs">
       <SubType>Form</SubType>
@@ -123,8 +123,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pages\Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\CommissionLeader.resx">
+      <DependentUpon>CommissionLeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>

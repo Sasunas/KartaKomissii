@@ -24,16 +24,19 @@ namespace Commission_map.Pages
         public EvaluationGlava()
         {
             InitializeComponent();
-            Ocenka_Load();
+            Archetype_Load();
         }
 
 
-        public void Ocenka_Load()
+        public void Block_Load(string Name)
         {
             try
             {
                 //загрузка перечня Блоков оценивания
-                string _command = "SELECT * FROM Блоки";
+                string _command = "SELECT * FROM Блоки a " +
+                   "left join Требование b on a.ID = b.ID_Блока " +
+                   "left join Архетипы c on b.ID_Архетипа = c.ID " +
+                   "where c.Название = '" + Name + "'";
                 modules.Reader(_command, out SqlDataReader _reader);
                 Block.Items.Clear();
                 while (_reader.Read())
@@ -41,15 +44,29 @@ namespace Commission_map.Pages
                     Block.Items.Add(_reader[1]);
                 }
                 _reader.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        public void Archetype_Load()
+        {
+            try
+            {
                 //загрузка перечня Архетипов оценивания
-                _command = "SELECT * FROM Архетипы";
-                modules.Reader(_command, out _reader);
+                string _command = "SELECT * FROM Архетипы";
+                modules.Reader(_command, out SqlDataReader _reader);
                 Archetype.Items.Clear();
                 while (_reader.Read())
                 {
                     Archetype.Items.Add(_reader[1]);
                 }
                 _reader.Close();
+                Archetype.SelectedIndex = 0;
+                Block_Load(Archetype.SelectedItem.ToString());
+                modules.Close();
             }
             catch (Exception exc)
             {
@@ -64,14 +81,16 @@ namespace Commission_map.Pages
             {
                 int _block = Block.SelectedIndex + 1;
                 int _arch = Archetype.SelectedIndex + 1;
-                string _command = "SELECT * FROM [Требование] WHERE ID_Архетипа = " + _arch + " AND ID_Блока = " + _block + "";
+                string _command = "SELECT * FROM [Требование] a " +
+                    "left join Блоки b on a.ID_Блока = b.ID " +
+                    "where a.ID_Архетипа = " + _arch + " and b.Название = '" + _block + "'";
                 modules.Reader(_command, out SqlDataReader _reader);
                 _reader.Read();
                 if (_reader.HasRows == true)
                 {
-                    Lowlevel = _reader[5].ToString().Trim();
-                    Mediumlevel = _reader[6].ToString().Trim();
-                    Hightlevel = _reader[7].ToString().Trim();
+                    Lowlevel = _reader[10].ToString().Trim();
+                    Mediumlevel = _reader[11].ToString().Trim();
+                    Hightlevel = _reader[12].ToString().Trim();
                     if (radioButton1.Checked)
                     {
                         Deskription.Text = Lowlevel;
@@ -107,6 +126,8 @@ namespace Commission_map.Pages
                 MessageBox.Show(exc.Message);
             }
         }
+
+
 
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -177,6 +198,20 @@ namespace Commission_map.Pages
             Deskription.Text = Hightlevel;
         }
 
+        private void Archetype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //загрузка перечня Блоков оценивания
+                Block_Load(Archetype.SelectedItem.ToString());
+                modules.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
         private void Estimate_Click(object sender, EventArgs e)
         {
             try
@@ -239,20 +274,6 @@ namespace Commission_map.Pages
             DateTimePicker1_ValueChanged(sender, e);
         }
 
-        private void Comment_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //Добовление комментария
-                string _command = "update [Оценка по требованию] set Комментарий = '" + commentBox.Text + "' where ID = " + (RolvKarte.ID_OcenkaTreb + 1) + " ";
-                modules.Command(_command);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
         private void Link_Click(object sender, EventArgs e)
         {
             try
@@ -291,5 +312,7 @@ namespace Commission_map.Pages
                 e.Handled = true;
             }
         }
+
+        
     }
 }

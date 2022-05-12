@@ -69,7 +69,7 @@ namespace Commission_map.Pages
 
         private void Back_Click(object sender, EventArgs e)
         {
-            Pages.Admin admin = new Pages.Admin();
+            Pages.CommissionLeader admin = new Pages.CommissionLeader();
             this.Hide();
             admin.ShowDialog();
         }
