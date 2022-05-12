@@ -115,27 +115,6 @@ namespace Commission_map
                         modules.Close();
                     }
                 }
-                else
-                {
-                    if (textBox1.Text == "ste")
-                    {
-                        if (textBox2.Text == "123")
-                        {
-                            PassLogin.ID = 4;
-                            MessageBox.Show("Вы Администратор");
-                            Pages.CommissionLeader admin = new Pages.CommissionLeader();
-                            this.Hide();
-                            admin.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Неправильный Логин");
-                            _reader.Close();
-                            modules.Close();
-                        }
-                    }
-                    
-                }
             }
             catch (Exception exc)
             {

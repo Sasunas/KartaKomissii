@@ -33,7 +33,6 @@ namespace Commission_map.Pages
             _reader.Close();
         }
 
-
         private void Regist_Click(object sender, EventArgs e)
         {
             int value;

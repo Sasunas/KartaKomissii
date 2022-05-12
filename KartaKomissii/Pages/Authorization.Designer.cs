@@ -88,7 +88,7 @@ namespace Commission_map
             // 
             this.Exit.BackColor = System.Drawing.Color.White;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Exit.Location = new System.Drawing.Point(12, 136);
+            this.Exit.Location = new System.Drawing.Point(12, 131);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(75, 23);
             this.Exit.TabIndex = 5;
@@ -112,7 +112,7 @@ namespace Commission_map
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(196, 171);
+            this.ClientSize = new System.Drawing.Size(196, 166);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.label2);

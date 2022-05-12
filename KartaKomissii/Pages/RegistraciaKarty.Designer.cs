@@ -47,14 +47,14 @@ namespace Commission_map.Pages
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(99, 35);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(139, 21);
+            this.comboBox1.Size = new System.Drawing.Size(156, 21);
             this.comboBox1.TabIndex = 29;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(8, 94);
+            this.label6.Location = new System.Drawing.Point(8, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 24;
@@ -64,7 +64,7 @@ namespace Commission_map.Pages
             // 
             this.Back.BackColor = System.Drawing.Color.White;
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Location = new System.Drawing.Point(11, 168);
+            this.Back.Location = new System.Drawing.Point(8, 115);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(75, 23);
             this.Back.TabIndex = 23;
@@ -76,9 +76,9 @@ namespace Commission_map.Pages
             // 
             this.Regist.BackColor = System.Drawing.Color.White;
             this.Regist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Regist.Location = new System.Drawing.Point(49, 130);
+            this.Regist.Location = new System.Drawing.Point(99, 115);
             this.Regist.Name = "Regist";
-            this.Regist.Size = new System.Drawing.Size(89, 23);
+            this.Regist.Size = new System.Drawing.Size(156, 23);
             this.Regist.TabIndex = 22;
             this.Regist.Text = "Регистрация";
             this.Regist.UseVisualStyleBackColor = false;
@@ -88,7 +88,7 @@ namespace Commission_map.Pages
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(8, 67);
+            this.label3.Location = new System.Drawing.Point(8, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 18;
@@ -106,22 +106,23 @@ namespace Commission_map.Pages
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(99, 67);
+            this.dateTimePicker1.Location = new System.Drawing.Point(99, 62);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(139, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(156, 20);
             this.dateTimePicker1.TabIndex = 30;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(99, 94);
+            this.dateTimePicker2.Location = new System.Drawing.Point(99, 89);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(156, 20);
             this.dateTimePicker2.TabIndex = 31;
             // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Checked = true;
+            this.radioButton3.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton3.Location = new System.Drawing.Point(201, 12);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(104, 17);
@@ -133,6 +134,7 @@ namespace Commission_map.Pages
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton2.Location = new System.Drawing.Point(99, 12);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(91, 17);
@@ -144,6 +146,7 @@ namespace Commission_map.Pages
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton1.Location = new System.Drawing.Point(8, 12);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
@@ -157,7 +160,7 @@ namespace Commission_map.Pages
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(308, 199);
+            this.ClientSize = new System.Drawing.Size(308, 150);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);

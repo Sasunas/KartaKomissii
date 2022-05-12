@@ -47,7 +47,7 @@ namespace Commission_map.Pages
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(106, 89);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.Size = new System.Drawing.Size(139, 21);
             this.comboBox1.TabIndex = 29;
             // 
             // label7
@@ -64,7 +64,7 @@ namespace Commission_map.Pages
             // 
             this.Back.BackColor = System.Drawing.Color.White;
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Location = new System.Drawing.Point(13, 149);
+            this.Back.Location = new System.Drawing.Point(10, 116);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(75, 23);
             this.Back.TabIndex = 23;
@@ -78,7 +78,7 @@ namespace Commission_map.Pages
             this.Regist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Regist.Location = new System.Drawing.Point(106, 116);
             this.Regist.Name = "Regist";
-            this.Regist.Size = new System.Drawing.Size(100, 23);
+            this.Regist.Size = new System.Drawing.Size(139, 23);
             this.Regist.TabIndex = 22;
             this.Regist.Text = "Регистрация";
             this.Regist.UseVisualStyleBackColor = false;
@@ -109,7 +109,7 @@ namespace Commission_map.Pages
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(106, 62);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
+            this.comboBox2.Size = new System.Drawing.Size(139, 21);
             this.comboBox2.TabIndex = 30;
             // 
             // comboBox3
@@ -117,12 +117,13 @@ namespace Commission_map.Pages
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(106, 35);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(100, 21);
+            this.comboBox3.Size = new System.Drawing.Size(139, 21);
             this.comboBox3.TabIndex = 31;
             // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton3.Location = new System.Drawing.Point(191, 12);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(104, 17);
@@ -135,6 +136,7 @@ namespace Commission_map.Pages
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton2.Location = new System.Drawing.Point(94, 12);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(91, 17);
@@ -146,6 +148,7 @@ namespace Commission_map.Pages
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton1.Location = new System.Drawing.Point(10, 12);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
@@ -159,7 +162,7 @@ namespace Commission_map.Pages
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(295, 183);
+            this.ClientSize = new System.Drawing.Size(295, 149);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);

@@ -24,34 +24,41 @@ namespace Commission_map.Pages
 
         private void Regist_Click(object sender, EventArgs e)
         {
-            int value;
-            //Рассчёт длины Сотрудников
-            string _command = "SELECT COUNT(*) FROM [Сотрудник]";
-            modules.Reader(_command, out SqlDataReader _reader);
-            _reader.Read();
-            int count = 0;
-            if (int.TryParse(_reader[0].ToString(), out value))
+            if(password.Text == null)
             {
-                count = value;
+                MessageBox.Show("Пароль содержит слишком малое количество символов");
             }
-            _reader.Close();
-            //Наполнение Сотрудников
-            _command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + lastname.Text + "', '" + name.Text
-                                                                                          + "', '" + otchestvo.Text + "')";
-            modules.Command(_command);
-            //Рассчёт длины Паролей
-            _command = "SELECT COUNT(*) FROM [Пароли]";
-            modules.Reader(_command, out _reader);
-            _reader.Read();
-            if (int.TryParse(_reader[0].ToString(), out value))
+            else
             {
-                count = value;
+                int value;
+                //Рассчёт длины Сотрудников
+                string _command = "SELECT COUNT(*) FROM [Сотрудник]";
+                modules.Reader(_command, out SqlDataReader _reader);
+                _reader.Read();
+                int count = 0;
+                if (int.TryParse(_reader[0].ToString(), out value))
+                {
+                    count = value;
+                }
+                _reader.Close();
+                //Наполнение Сотрудников
+                _command = "INSERT INTO [Сотрудник] (ID,Фамилия,Имя,Отчество) VALUES(" + (count + 1) + ", '" + lastname.Text + "', '" + name.Text
+                                                                                              + "', '" + otchestvo.Text + "')";
+                modules.Command(_command);
+                //Рассчёт длины Паролей
+                _command = "SELECT COUNT(*) FROM [Пароли]";
+                modules.Reader(_command, out _reader);
+                _reader.Read();
+                if (int.TryParse(_reader[0].ToString(), out value))
+                {
+                    count = value;
+                }
+                _reader.Close();
+                // Наполнение Паролей
+                _command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + login.Text + "','" + password.Text + "')";
+                modules.Command(_command);
+                MessageBox.Show("Сотрудник был успешно зарегистрирован");
             }
-            _reader.Close();
-            // Наполнение Паролей
-            _command = "INSERT INTO [Пароли] (ID_Сотрудника, Логин, Пароль) VALUES(" + (count + 1) + ",'" + login.Text + "','" + password.Text + "')";
-            modules.Command(_command);
-            MessageBox.Show("Сотрудник был успешно зарегистрирован");
         }
         
         private void Back_Click(object sender, EventArgs e)

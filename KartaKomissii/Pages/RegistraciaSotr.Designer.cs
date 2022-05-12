@@ -78,32 +78,32 @@ namespace Commission_map.Pages
             // 
             // lastname
             // 
-            this.lastname.Location = new System.Drawing.Point(72, 35);
+            this.lastname.Location = new System.Drawing.Point(90, 35);
             this.lastname.Name = "lastname";
-            this.lastname.Size = new System.Drawing.Size(100, 20);
+            this.lastname.Size = new System.Drawing.Size(144, 20);
             this.lastname.TabIndex = 4;
             // 
             // name
             // 
-            this.name.Location = new System.Drawing.Point(72, 61);
+            this.name.Location = new System.Drawing.Point(90, 61);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(100, 20);
+            this.name.Size = new System.Drawing.Size(144, 20);
             this.name.TabIndex = 5;
             // 
             // otchestvo
             // 
-            this.otchestvo.Location = new System.Drawing.Point(72, 89);
+            this.otchestvo.Location = new System.Drawing.Point(90, 89);
             this.otchestvo.Name = "otchestvo";
-            this.otchestvo.Size = new System.Drawing.Size(100, 20);
+            this.otchestvo.Size = new System.Drawing.Size(144, 20);
             this.otchestvo.TabIndex = 6;
             // 
             // Regist
             // 
             this.Regist.BackColor = System.Drawing.Color.White;
             this.Regist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Regist.Location = new System.Drawing.Point(72, 166);
+            this.Regist.Location = new System.Drawing.Point(90, 166);
             this.Regist.Name = "Regist";
-            this.Regist.Size = new System.Drawing.Size(100, 23);
+            this.Regist.Size = new System.Drawing.Size(144, 23);
             this.Regist.TabIndex = 8;
             this.Regist.Text = "Регистрация";
             this.Regist.UseVisualStyleBackColor = false;
@@ -113,7 +113,7 @@ namespace Commission_map.Pages
             // 
             this.Back.BackColor = System.Drawing.Color.White;
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Back.Location = new System.Drawing.Point(11, 195);
+            this.Back.Location = new System.Drawing.Point(9, 166);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(75, 23);
             this.Back.TabIndex = 9;
@@ -123,16 +123,16 @@ namespace Commission_map.Pages
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(72, 140);
+            this.password.Location = new System.Drawing.Point(90, 140);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(100, 20);
+            this.password.Size = new System.Drawing.Size(144, 20);
             this.password.TabIndex = 13;
             // 
             // login
             // 
-            this.login.Location = new System.Drawing.Point(72, 115);
+            this.login.Location = new System.Drawing.Point(90, 115);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(100, 20);
+            this.login.Size = new System.Drawing.Size(144, 20);
             this.login.TabIndex = 12;
             // 
             // label5
@@ -159,6 +159,7 @@ namespace Commission_map.Pages
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton1.Location = new System.Drawing.Point(15, 12);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
@@ -170,6 +171,7 @@ namespace Commission_map.Pages
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton2.Location = new System.Drawing.Point(99, 12);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(91, 17);
@@ -181,6 +183,7 @@ namespace Commission_map.Pages
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton3.Location = new System.Drawing.Point(196, 12);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(104, 17);
@@ -194,7 +197,7 @@ namespace Commission_map.Pages
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(302, 227);
+            this.ClientSize = new System.Drawing.Size(302, 200);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
